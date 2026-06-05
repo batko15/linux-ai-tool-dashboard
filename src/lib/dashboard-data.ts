@@ -70,6 +70,10 @@ export const sections: Section[] = [
   { id: "security", label: "Sicherheit", icon: "Shield" },
   { id: "system", label: "System Tools", icon: "Wrench" },
   { id: "shortcuts", label: "Desktop Shortcuts", icon: "AppWindow" },
+  { id: "antigravity", label: "Antigravity AI", icon: "Rocket" },
+  { id: "repos", label: "GitHub Repos", icon: "GitBranch" },
+  { id: "deepweb", label: "Deep Web & Stores", icon: "Globe" },
+  { id: "integration", label: "System Integration", icon: "Package" },
   { id: "script", label: "Script Generator", icon: "ScrollText" },
 ];
 
@@ -934,4 +938,113 @@ export const ollamaModels = [
   { name: "gemma2:9b", size: "5.5 GB", description: "Google Gemma 2 - Neu & stark" },
   { name: "qwen2.5:7b", size: "4.4 GB", description: "Alibaba Qwen 2.5 - Multilingual" },
   { name: "deepseek-coder:6.7b", size: "3.8 GB", description: "DeepSeek Coder - Code-Spezialist" },
+];
+
+// ============ Anti-Gravity CLI Mega System-Optimizer v3.0 ============
+
+export interface GitHubRepo {
+  name: string;
+  description: string;
+  url: string;
+  installDir: string;
+  category: string;
+}
+
+// ============ Antigravity AI CLI Tools ============
+export const antigravityCliTools: Tool[] = [
+  { name: "Gemini CLI", description: "Google KI, 1M+ Token Kontext", installCmd: "npm install -g @anthropic-ai/gemini-cli 2>/dev/null || pip install gemini-cli", category: "Google AI", source: "custom", homepage: "https://ai.google.dev" },
+  { name: "Codex CLI", description: "OpenAI Codex, Rust-basiert", installCmd: "npm install -g @openai/codex", category: "OpenAI", source: "custom", homepage: "https://openai.com/codex" },
+  { name: "Claude Code", description: "Anthropic Claude, tiefes Reasoning", installCmd: "npm install -g @anthropic-ai/claude-code", category: "Anthropic", source: "custom", homepage: "https://claude.ai" },
+  { name: "Aider", description: "Lokale Modelle, Git-Integration", installCmd: "pip install aider-chat", category: "Multi-Model", source: "pip", github: "https://github.com/paul-gauthier/aider" },
+  { name: "MCPBundles", description: "700+ Services fuer AI Agents", installCmd: "npm install -g mcpbundles", category: "MCP", source: "custom" },
+  { name: "Valyu CLI", description: "SEC-Filings, FRED, PubMed Daten", installCmd: "pip install valyu-cli", category: "Data", source: "pip" },
+  { name: "ElevenLabs CLI", description: "TTS, STT, Voice Cloning", installCmd: "pip install elevenlabs", category: "Voice", source: "pip", homepage: "https://elevenlabs.io" },
+  { name: "Antigravity Code", description: "Multi-Provider Failover", installCmd: "git clone https://github.com/antigravity-research/antigravity-code ~/.local/share/antigravity-code && cd ~/.local/share/antigravity-code && npm install && npm run setup", category: "Multi-Provider", source: "git" },
+  { name: "Gemini Antigravity", description: "Terminal AI Agent", installCmd: "git clone https://github.com/antigravity-research/gemini-antigravity-cli ~/.local/share/gemini-antigravity && cd ~/.local/share/gemini-antigravity && npm install && npm link", category: "Agent", source: "git" },
+  { name: "Antigravity Harness", description: "Multi-Agent Team", installCmd: "git clone https://github.com/antigravity-research/antigravity-cli-harness ~/.local/share/antigravity-cli-harness && cd ~/.local/share/antigravity-cli-harness && npm install && npm link", category: "Multi-Agent", source: "git" },
+  { name: "Oh-My-Antigravity (oma)", description: "Workflow Pack", installCmd: "git clone https://github.com/antigravity-research/oh-my-antigravity ~/.local/share/oh-my-antigravity && cd ~/.local/share/oh-my-antigravity && npm install && npm link", category: "Workflows", source: "git" },
+  { name: "Ollama (lokale LLMs)", description: "Llama 3, Mistral, Phi-3 lokal", installCmd: "yay -S ollama && ollama pull llama3:8b", category: "LLM Engine", source: "yay", github: "https://github.com/ollama/ollama" },
+];
+
+// ============ GitHub Repositories ============
+export const githubRepos: GitHubRepo[] = [
+  { name: "antigravity-proxy-tools", description: "Multi-Account Proxy Manager", url: "https://github.com/antigravity-research/antigravity-proxy-tools", installDir: "~/Projects/antigravity-repos/antigravity-proxy-tools", category: "Proxy" },
+  { name: "pipeline-relay", description: "Agent-Orchestrierung", url: "https://github.com/antigravity-research/pipeline-relay", installDir: "~/Projects/antigravity-repos/pipeline-relay", category: "Orchestration" },
+  { name: "Agentic-SEO-Skill", description: "SEO-Analyse mit 16 Sub-Skills", url: "https://github.com/antigravity-research/Agentic-SEO-Skill", installDir: "~/Projects/antigravity-repos/Agentic-SEO-Skill", category: "SEO" },
+  { name: "zero-limit", description: "Quota-Monitor", url: "https://github.com/antigravity-research/zero-limit", installDir: "~/Projects/antigravity-repos/zero-limit", category: "Monitoring" },
+  { name: "antigravity-workflows", description: "Stack-agnostische Workflows", url: "https://github.com/antigravity-research/antigravity-workflows", installDir: "~/Projects/antigravity-repos/antigravity-workflows", category: "Workflows" },
+  { name: "agentMemory", description: "Hybrid Memory System", url: "https://github.com/antigravity-research/agentMemory", installDir: "~/Projects/antigravity-repos/agentMemory", category: "Memory" },
+  { name: "antigravity-link-extension", description: "Mobile VS Code Bridge", url: "https://github.com/antigravity-research/antigravity-link-extension", installDir: "~/Projects/antigravity-repos/antigravity-link-extension", category: "VS Code" },
+  { name: "OmniCode", description: "169+ Provider IDE", url: "https://github.com/antigravity-research/OmniCode", installDir: "~/Projects/antigravity-repos/OmniCode", category: "IDE" },
+  { name: "visual-diagramming-export", description: "Excalidraw/Markmap/PlantUML", url: "https://github.com/antigravity-research/visual-diagramming-export", installDir: "~/Projects/antigravity-repos/visual-diagramming-export", category: "Diagramming" },
+  { name: "antigravity-evolve-concept", description: "Evolutionaere Algorithmen", url: "https://github.com/antigravity-research/antigravity-evolve-concept", installDir: "~/Projects/antigravity-repos/antigravity-evolve-concept", category: "Algorithms" },
+  { name: "claude-seo-skills", description: "44 Claude SEO Commands", url: "https://github.com/antigravity-research/claude-seo-skills", installDir: "~/Projects/antigravity-repos/claude-seo-skills", category: "SEO" },
+  { name: "antigravity-monitor", description: "Quota Dashboard", url: "https://github.com/antigravity-research/antigravity-monitor", installDir: "~/Projects/antigravity-repos/antigravity-monitor", category: "Monitoring" },
+  { name: "Zenith-Extension", description: "Visuelle React-Entwicklung", url: "https://github.com/antigravity-research/Zenith-Extension", installDir: "~/Projects/antigravity-repos/Zenith-Extension", category: "React" },
+  { name: "ai-code-interface.el", description: "Emacs AI Interface", url: "https://github.com/antigravity-research/ai-code-interface.el", installDir: "~/Projects/antigravity-repos/ai-code-interface.el", category: "Emacs" },
+  { name: "lanes-sh/app", description: "Mission Control fuer Agents", url: "https://github.com/lanes-sh/app", installDir: "~/Projects/antigravity-repos/lanes-app", category: "Management" },
+  { name: "oh-my-antigravity", description: "Multi-Agent Workflow Pack", url: "https://github.com/antigravity-research/oh-my-antigravity", installDir: "~/Projects/antigravity-repos/oh-my-antigravity", category: "Workflows" },
+  { name: "gemini-antigravity-cli", description: "Terminal AI Agent", url: "https://github.com/antigravity-research/gemini-antigravity-cli", installDir: "~/Projects/antigravity-repos/gemini-antigravity-cli", category: "Agent" },
+  { name: "antigravity-cli-termux", description: "Android/Termux Setup", url: "https://github.com/antigravity-research/antigravity-cli-termux", installDir: "~/Projects/antigravity-repos/antigravity-cli-termux", category: "Mobile" },
+  { name: "antigravity-cli-harness", description: "Multi-Agent Team Scaffold", url: "https://github.com/antigravity-research/antigravity-cli-harness", installDir: "~/Projects/antigravity-repos/antigravity-cli-harness", category: "Multi-Agent" },
+  { name: "antigravity-code", description: "Multi-Provider Code CLI", url: "https://github.com/antigravity-research/antigravity-code", installDir: "~/Projects/antigravity-repos/antigravity-code", category: "Multi-Provider" },
+  { name: "vibe-coding-config", description: "Vibe Coding Konfiguration", url: "https://github.com/antigravity-research/vibe-coding-config", installDir: "~/Projects/antigravity-repos/vibe-coding-config", category: "Config" },
+  { name: "antigravity-setup-scripts", description: "Automatische Setup-Skripte", url: "https://github.com/antigravity-research/antigravity-setup-scripts", installDir: "~/Projects/antigravity-repos/antigravity-setup-scripts", category: "Setup" },
+];
+
+// ============ Deep Web & Search Tools ============
+export const deepWebTools: Tool[] = [
+  { name: "Googler", description: "Google Suche im Terminal", installCmd: "yay -S googler", category: "Search", source: "yay" },
+  { name: "DDGR (DuckDuckGo)", description: "DuckDuckGo CLI Suche", installCmd: "yay -S ddgr", category: "Search", source: "yay" },
+  { name: "Scrapy", description: "Python Web-Scraper", installCmd: "pip install scrapy", category: "Scraper", source: "pip", github: "https://github.com/scrapy/scrapy" },
+  { name: "BeautifulSoup4", description: "HTML/XML Parser", installCmd: "pip install beautifulsoup4 lxml", category: "Parser", source: "pip" },
+  { name: "Playwright", description: "Browser-Automation (Python)", installCmd: "pip install playwright && playwright install chromium", category: "Automation", source: "pip", homepage: "https://playwright.dev" },
+  { name: "WaybackPy", description: "Wayback Machine CLI", installCmd: "pip install waybackpy", category: "Archive", source: "pip" },
+  { name: "gh (GitHub CLI)", description: "GitHub CLI + Extensions", installCmd: "sudo pacman -S github-cli && gh extension install github/gh-copilot", category: "GitHub", source: "pacman" },
+  { name: "ripgrep (rg)", description: "Ultra-schnell Datei-Suche (Rust)", installCmd: "sudo pacman -S ripgrep", category: "Search", source: "pacman" },
+  { name: "fd (find)", description: "Modernes find-Alternative (Rust)", installCmd: "sudo pacman -S fd", category: "Search", source: "pacman" },
+  { name: "HTTPie", description: "Modernes curl (HTTP Client)", installCmd: "sudo pacman -S httpie", category: "HTTP", source: "pacman" },
+];
+
+// ============ Program Stores / Package Managers ============
+export const programStores: Tool[] = [
+  { name: "Flatpak", description: "Universal Linux-Pakete", installCmd: "sudo pacman -S flatpak && flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo", category: "Runtime", source: "pacman" },
+  { name: "Snap", description: "Canonicals Paket-Manager", installCmd: "sudo pacman -S snapd && sudo systemctl enable --now snapd.socket", category: "Runtime", source: "pacman" },
+  { name: "AppImage", description: "Portable Linux-Apps", installCmd: "yay -S appimagelauncher", category: "Runtime", source: "yay" },
+  { name: "Homebrew (Linuxbrew)", description: "macOS-Paketmanager fuer Linux", installCmd: "/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"", category: "Runtime", source: "custom" },
+  { name: "Nix", description: "Funktionale Paketverwaltung", installCmd: "sh <(curl -L https://nixos.org/nix/install) --daemon", category: "Runtime", source: "custom" },
+  { name: "asdf", description: "Multi-Runtime Version Manager", installCmd: "git clone https://github.com/asdf-vm/asdf.git ~/.asdf --depth 1", category: "Version Manager", source: "git" },
+];
+
+// ============ Duplicate Cleaner Tools ============
+export const duplicateTools: Tool[] = [
+  { name: "jdupes", description: "Extrem schneller Duplikat-Finder (C)", installCmd: "yay -S jdupes", category: "Scanner", source: "yay" },
+  { name: "rdfind", description: "Redundant Data Finder", installCmd: "sudo pacman -S rdfind", category: "Scanner", source: "pacman" },
+  { name: "czkawka", description: "GUI + CLI Duplikat-Tool (Rust)", installCmd: "yay -S czkawka", category: "Scanner", source: "yay" },
+  { name: "fdupes", description: "Klassischer Duplikat-Finder", installCmd: "sudo pacman -S fdupes", category: "Scanner", source: "pacman" },
+  { name: "rmlint", description: "Umfassender System-Cleaner", installCmd: "yay -S rmlint", category: "Cleaner", source: "yay" },
+];
+
+// ============ Essential CLI Tools ============
+export const essentialCliTools: Tool[] = [
+  { name: "htop", description: "Interaktiver Prozess-Viewer", installCmd: "sudo pacman -S htop", category: "System", source: "pacman" },
+  { name: "btop", description: "Moderne System-Monitoring", installCmd: "yay -S btop", category: "System", source: "yay" },
+  { name: "fzf", description: "Fuzzy Finder", installCmd: "sudo pacman -S fzf", category: "Search", source: "pacman" },
+  { name: "fd", description: "Schnelle find-Alternative (Rust)", installCmd: "sudo pacman -S fd", category: "Search", source: "pacman" },
+  { name: "ripgrep", description: "Ultra-schnell grep (Rust)", installCmd: "sudo pacman -S ripgrep", category: "Search", source: "pacman" },
+  { name: "bat", description: "cat mit Syntax-Highlighting", installCmd: "sudo pacman -S bat", category: "File View", source: "pacman" },
+  { name: "eza", description: "Modernes ls (exa-Fork)", installCmd: "sudo pacman -S eza", category: "File View", source: "pacman" },
+  { name: "zoxide", description: "Intelligenter cd (Rust)", installCmd: "sudo pacman -S zoxide", category: "Navigation", source: "pacman" },
+  { name: "starship", description: "Cross-Shell Prompt", installCmd: "sudo pacman -S starship", category: "Prompt", source: "pacman" },
+  { name: "hyperfine", description: "Benchmark-Tool (Rust)", installCmd: "sudo pacman -S hyperfine", category: "Benchmark", source: "pacman" },
+  { name: "bandwhich", description: "Netzwerk-Bandbreite Monitor (Rust)", installCmd: "yay -S bandwhich", category: "Network", source: "yay" },
+  { name: "procs", description: "Modernes ps-Alternative (Rust)", installCmd: "yay -S procs", category: "System", source: "yay" },
+  { name: "dust", description: "Modernes du-Alternative (Rust)", installCmd: "yay -S du-dust", category: "Disk", source: "yay" },
+  { name: "tldr", description: "Vereinfachte Man-Pages", installCmd: "yay -S tealdeer", category: "Docs", source: "yay" },
+  { name: "theFuck", description: "Command-Korrektur (thefuck)", installCmd: "pip install thefuck", category: "Shell", source: "pip" },
+  { name: "direnv", description: "Umgebungs-Manager", installCmd: "sudo pacman -S direnv", category: "Environment", source: "pacman" },
+  { name: "jq", description: "JSON Processor (CLI)", installCmd: "sudo pacman -S jq", category: "Data", source: "pacman" },
+  { name: "micro", description: "Terminal-Texteditor (Go)", installCmd: "yay -S micro", category: "Editor", source: "yay" },
+  { name: "glow", description: "Markdown Renderer (CLI)", installCmd: "yay -S glow", category: "Markdown", source: "yay" },
+  { name: "ncdu", description: "Disk-Usage Analyzer (NCurses)", installCmd: "sudo pacman -S ncdu", category: "Disk", source: "pacman" },
 ];

@@ -5,6 +5,7 @@ import { sections } from "@/lib/dashboard-data";
 import {
   Monitor, LayoutDashboard, Palette, Brain, Code2, TerminalSquare,
   Gauge, Gamepad2, ImageIcon, Music, Wifi, Shield, Wrench, AppWindow, ScrollText,
+  Rocket, GitBranch, Globe, Package,
   ChevronLeft, ChevronRight, Search, Command, Menu, X,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -14,6 +15,7 @@ import { Button } from "@/components/ui/button";
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Monitor, LayoutDashboard, Palette, Brain, Code2, TerminalSquare,
   Gauge, Gamepad2, ImageIcon, Music, Wifi, Shield, Wrench, AppWindow, ScrollText,
+  Rocket, GitBranch, Globe, Package,
 };
 
 interface SidebarProps {

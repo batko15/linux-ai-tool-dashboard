@@ -17,6 +17,10 @@ import { SecuritySection } from "@/components/dashboard/sections/security";
 import { SystemSection } from "@/components/dashboard/sections/system";
 import { ShortcutsSection } from "@/components/dashboard/sections/shortcuts";
 import { ScriptSection } from "@/components/dashboard/sections/script";
+import { AntigravitySection } from "@/components/dashboard/sections/antigravity";
+import { ReposSection } from "@/components/dashboard/sections/repos";
+import { DeepwebSection } from "@/components/dashboard/sections/deepweb";
+import { IntegrationSection } from "@/components/dashboard/sections/integration";
 import { Toaster } from "@/components/ui/sonner";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -36,6 +40,10 @@ const sectionComponents: Record<string, React.ComponentType> = {
   system: SystemSection,
   shortcuts: ShortcutsSection,
   script: ScriptSection,
+  antigravity: AntigravitySection,
+  repos: ReposSection,
+  deepweb: DeepwebSection,
+  integration: IntegrationSection,
 };
 
 export default function DashboardPage() {
