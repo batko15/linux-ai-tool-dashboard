@@ -15,7 +15,7 @@
 [![Manjaro](https://img.shields.io/badge/Manjaro-Linux-35BF5C?logo=manjarolinux&logoColor=white)](https://manjaro.org/)
 [![NVIDIA](https://img.shields.io/badge/NVIDIA-RTX_4070-76B900?logo=nvidia&logoColor=white)](https://www.nvidia.com/)
 
-**200+ curated tools · 19 sections · Anti-Gravity AI v3.0 · One-click install commands**
+**500+ curated tools · 24 sections · Anti-Gravity AI v3.0 · One-click install commands**
 
 [Features](#-features) · [Sections](#-dashboard-sections) · [Quick Start](#-quick-start) · [Tech Stack](#-tech-stack) · [Screenshots](#-screenshots) · [System](#-target-system) · [License](#-license)
 
@@ -26,13 +26,13 @@
 ## 🚀 Features
 
 - **🖥️ System Overview** — Real-time system specs, hardware info, and network configuration at a glance
-- **🧠 AI/KI Tools** — 13+ local AI tools (Ollama, Stable Diffusion, ComfyUI, Whisper, RAGFlow, PyTorch, TensorFlow, JupyterLab...)
-- **🚀 Anti-Gravity AI v3.0** — 12 AI CLI agents (Gemini CLI, Claude Code, Codex CLI, Aider, MCPBundles...) + 22 GitHub repositories
-- **🎮 Gaming Suite** — Steam, Lutris, Heroic, MangoHud, GameMode, Gamescope, Proton GE, Wine/DXVK/VKD3D
+- **🧠 AI/KI Tools** — 33+ local AI tools (Ollama, vLLM, LocalAI, Stable Diffusion, ComfyUI, Fooocus, Whisper.cpp, Bark, LangChain, CrewAI, AutoGPT...)
+- **🚀 Anti-Gravity AI v3.0** — 22 AI CLI agents (Gemini CLI, Claude Code, Continue.dev, Devika, Cline, Tabby...) + 31 GitHub repositories
+- **🎮 Gaming Suite** — Steam, Lutris, Heroic, Bottles, MangoHud, GameMode, Gamescope, ProtonUp-Qt, Wine/DXVK/VKD3D
 - **⚡ Performance Optimization** — CPU Governor, ZRAM, EarlyOOM, NVIDIA tuning, NVMe scheduler, swappiness
 - **🎨 Themes & Design** — Catppuccin, Papirus, Bibata, Kvantum, WhiteSur, Orchis, Sweet themes
-- **💻 Development** — VS Code, Neovim, JetBrains IDEs, Docker/Podman, GitKraken, Postman, LazyGit/Docker
-- **🔧 19 Interactive Sections** — Each with copy-to-clipboard install commands, category filtering, and direct links
+- **💻 Development** — Cursor, VS Code, Neovim, Helix, Zed, JetBrains IDEs, Docker, Ansible, Terraform, K9s...
+- **🔧 24 Interactive Sections** — Each with copy-to-clipboard install commands, category filtering, and direct links
 - **📱 Fully Responsive** — Mobile-first design with hamburger sidebar, works on any screen size
 - **🎯 One-Click Commands** — Every tool has a ready-to-paste install command for Arch/Manjaro Linux
 - **📜 Script Generator** — Built-in script blocks for NVIDIA optimization, Wayland setup, Zsh aliases, backups, systemd services
@@ -46,26 +46,31 @@
 | # | Section | Tools | Description |
 |---|---------|-------|-------------|
 | 1 | **System Overview** | — | CPU, GPU, RAM, storage, kernel, network specs |
-| 2 | **Desktop Environment** | 6 | KDE Plasma 6, Hyprland, GNOME 46, Latte Dock, SDDM |
-| 3 | **Themes & Design** | 10 | Catppuccin, Papirus, Bibata, Kvantum, WhiteSur, Orchis |
-| 4 | **AI / KI Tools** | 13 | Ollama, LM Studio, Open WebUI, Stable Diffusion, ComfyUI, Whisper, PyTorch, TensorFlow |
-| 5 | **Development** | 12 | VS Code, Neovim, JetBrains IDEs, Docker, GitKraken, Postman |
-| 6 | **Terminal & Shell** | 10 | Kitty, Alacritty, WezTerm, Zsh, Powerlevel10k, fzf, tmux |
-| 7 | **Performance** | 8 | CPU Governor, ZRAM, EarlyOOM, Preload, NVTop, NVIDIA tuning |
-| 8 | **Gaming** | 11 | Steam, Lutris, Heroic, MangoHud, GameMode, Gamescope, Proton GE, Wine |
-| 9 | **Graphics & Design** | 9 | Krita, GIMP, Inkscape, Blender, Kdenlive, Darktable |
-| 10 | **Audio & Video** | 9 | MPV, VLC, Audacity, LMMS, PipeWire, Strawberry |
-| 11 | **Network & VPN** | 10 | WireGuard, ProtonVPN, Wireshark, Nmap, Remmina, SSH/Mosh |
-| 12 | **Security** | 11 | ClamAV, Lynis, Firejail, VeraCrypt, KeePassXC, Tor, Signal |
-| 13 | **System Tools** | 15 | NetData, Cockpit, Timeshift, GParted, LibreOffice, Obsidian |
+| 2 | **Desktop Environment** | 12 | KDE Plasma 6, Hyprland, GNOME 46, i3, Sway, bspwm, COSMIC, XFCE |
+| 3 | **Themes & Design** | 18 | Catppuccin, Papirus, Bibata, Kvantum, Dracula, Nordic, Colloid, Tela |
+| 4 | **AI / KI Tools** | 33 | Ollama, LocalAI, vLLM, Stable Diffusion, ComfyUI, Fooocus, Whisper.cpp, Bark, LangChain |
+| 5 | **Development** | 27 | Cursor, VS Code, Neovim, Helix, Zed, JetBrains IDEs, Docker, Ansible, Terraform, K9s |
+| 6 | **Terminal & Shell** | 26 | Kitty, Alacritty, WezTerm, Starship, Zoxide, Delta, Ripgrep, Zellij, Atuin, Yazi |
+| 7 | **Performance** | 18 | CPU Governor, ZRAM, EarlyOOM, Auto-CPU-Freq, ananicy-cpp, NVTop, NVIDIA tuning |
+| 8 | **Gaming** | 21 | Steam, Lutris, Heroic, Bottles, MangoHud, GameMode, Gamescope, ProtonUp-Qt, Wine |
+| 9 | **Graphics & Design** | 19 | Krita, GIMP, Inkscape, Blender, FontForge, Natron, digiKam, Synfig Studio |
+| 10 | **Audio & Video** | 19 | MPV, VLC, Spotube, Mixxx, EasyEffects, MuseScore, Celluloid, PipeWire |
+| 11 | **Network & VPN** | 20 | WireGuard, Tailscale, Pi-hole, Cloudflare WARP, Wireshark, Nmap, qBittorrent |
+| 12 | **Security** | 22 | ClamAV, Lynis, UFW, CrowdSec, VeraCrypt, KeePassXC, Tor, OnionShare, Signal |
+| 13 | **System Tools** | 25 | NetData, Cockpit, Timeshift, Btop++, BleachBit, Restic, KDiskMark, LibreOffice |
 | 14 | **Desktop Shortcuts** | 10 | Ready-to-use .desktop entries for AI tools & utilities |
 | 15 | **Script Generator** | 5 | NVIDIA, Wayland, Zsh, Backup, Systemd service scripts |
-| 16 | **Anti-Gravity AI** | 12 | Gemini CLI, Claude Code, Codex CLI, Aider, ElevenLabs CLI |
-| 17 | **GitHub Repos** | 22 | Curated AI/Dev repositories with clone commands |
+| 16 | **Anti-Gravity AI** | 22 | Gemini CLI, Claude Code, Continue.dev, Devika, OpenDevin, Cline, Tabby, PearAI |
+| 17 | **GitHub Repos** | 31 | awesome-linux-software, awesome-selfhosted, awesome-llm, Hyprland wiki |
 | 18 | **Deep Web & Stores** | 8 | Flathub, Snap, AUR, AppImage sources |
 | 19 | **System Integration** | — | systemd services, .desktop files, browser launcher |
+| 20 | **Browser & Web** | 12 | Brave, Firefox, Vivaldi, Thorium, LibreWolf, Mullvad, uBlock Origin |
+| 21 | **Wayland & WL Tools** | 18 | Waybar, Rofi-WL, Fuzzel, eww, Mako, SwayNC, foot, hyprpicker |
+| 22 | **Self-Hosted** | 15 | Nextcloud, Immich, Jellyfin, Home Assistant, Grafana, Vaultwarden |
+| 23 | **DevOps & Infra** | 15 | K3s, Podman Desktop, Helm, Prometheus, Traefik, Caddy, ArgoCD |
+| 24 | **Privacy & Anonym** | 12 | Tor, I2P, Tailscale, Pi-hole, AdGuard, LUKS, Proxychains-ng |
 
-> **200+ tools** with one-click install commands optimized for Manjaro/Arch Linux
+> **500+ tools** with one-click install commands optimized for Manjaro/Arch Linux
 
 ---
 
@@ -121,7 +126,7 @@ bun run start
 
 ## 📸 Screenshots
 
-> 🖼️ Open the dashboard and explore all 19 interactive sections with smooth animations and responsive design.
+> 🖼️ Open the dashboard and explore all 24 interactive sections with smooth animations and responsive design.
 
 ### Dashboard Architecture
 
@@ -136,7 +141,7 @@ src/
 │   │   ├── tool-card.tsx      # Tool card with copy command
 │   │   ├── command-block.tsx  # Script block component
 │   │   ├── copy-button.tsx    # Copy-to-clipboard button
-│   │   └── sections/          # 19 section components
+│   │   └── sections/          # 24 section components
 │   │       ├── overview.tsx    # System specs
 │   │       ├── ai.tsx         # AI/KI tools
 │   │       ├── antigravity.tsx # Anti-Gravity CLI
@@ -292,7 +297,7 @@ const sectionComponents = {
 
 ## 📋 Key Highlights
 
-- ✅ **200+ curated tools** across 19 categories
+- ✅ **500+ curated tools** across 24 categories
 - ✅ **One-click install commands** for every tool
 - ✅ **Copy-to-clipboard** functionality on all commands
 - ✅ **Category filtering** within each section
