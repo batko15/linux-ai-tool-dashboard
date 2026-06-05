@@ -59,8 +59,20 @@ db/
 /upload/
 /download/
 
-# Screenshots
+# Screenshots (local only)
 screenshot-dashboard.png
 
 # Skills directory
 /skills/
+
+# Worklog (internal)
+worklog.md
+
+# Agent context
+/agent-ctx/
+
+# Internal scripts
+/.zscripts/
+
+# Mini services runtime
+mini-services/*/node_modules
