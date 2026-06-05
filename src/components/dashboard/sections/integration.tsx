@@ -3,7 +3,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CommandBlock } from "../command-block";
-import { Download, Monitor, Package, Widget, TerminalSquare, Copy } from "lucide-react";
+import { Download, Monitor, Package, Puzzle, TerminalSquare, Copy } from "lucide-react";
 import { toast } from "sonner";
 
 const standaloneDesktopFile = `[Desktop Entry]
@@ -153,7 +153,7 @@ export function IntegrationSection() {
       <Card className="bg-card/80 border-border/50">
         <CardHeader className="pb-3">
           <CardTitle className="text-sm font-semibold flex items-center gap-2">
-            <Widget className="h-4 w-4 text-pink-400" />
+            <Puzzle className="h-4 w-4 text-pink-400" />
             Methode 3: KDE Plasma Widget
           </CardTitle>
         </CardHeader>

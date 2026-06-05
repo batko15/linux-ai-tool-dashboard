@@ -34,7 +34,7 @@ jdupes -r -N ~/Downloads
 
 # Flatpak vs. Native vergleichen
 flatpak list --app | awk '{print $1}' | while read app; do
-  pacman -Ss "^${app}$" 2>/dev/null && echo "DUPLICATE: $app"
+  pacman -Ss "^\${app}\$" 2>/dev/null && echo "DUPLICATE: \$app"
 done`;
 
 export function DeepwebSection() {
