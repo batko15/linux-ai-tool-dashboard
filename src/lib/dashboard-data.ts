@@ -6,7 +6,7 @@ export interface Tool {
   description: string;
   installCmd: string;
   category: string;
-  source: "pacman" | "yay" | "flatpak" | "git" | "pip" | "custom";
+  source: "pacman" | "yay" | "flatpak" | "git" | "pip" | "npm" | "cargo" | "custom";
   github?: string;
   homepage?: string;
   icon?: string;
@@ -75,6 +75,11 @@ export const sections: Section[] = [
   { id: "deepweb", label: "Deep Web & Stores", icon: "Globe" },
   { id: "integration", label: "System Integration", icon: "Package" },
   { id: "script", label: "Script Generator", icon: "ScrollText" },
+  { id: "browsers", label: "Browser & Web", icon: "Globe" },
+  { id: "wayland", label: "Wayland & WL Tools", icon: "Layers" },
+  { id: "selfhosted", label: "Self-Hosted", icon: "Server" },
+  { id: "devops", label: "DevOps & Infra", icon: "Container" },
+  { id: "privacy", label: "Privacy & Anonym", icon: "EyeOff" },
 ];
 
 // ============ AI / KI Tools ============
@@ -181,6 +186,26 @@ export const aiTools: Tool[] = [
     category: "ML Framework",
     source: "pacman",
   },
+  { name: "LocalAI", description: "OpenAI-API-kompatibler lokaler LLM-Server", installCmd: "git clone https://github.com/mudler/LocalAI ~/LocalAI && cd ~/LocalAI && docker compose up -d", category: "LLM Server", source: "git", github: "https://github.com/mudler/LocalAI" },
+  { name: "vLLM", description: "High-Throughput LLM-Inference-Engine", installCmd: "pip install vllm", category: "LLM Engine", source: "pip", github: "https://github.com/vllm-project/vllm" },
+  { name: "TabbyAPI", description: "Lightweight LLM-API-Server (ExLlamaV2)", installCmd: "git clone https://github.com/theroyallab/tabbyAPI ~/tabbyAPI && cd ~/tabbyAPI && pip install -r requirements.txt", category: "LLM Server", source: "git", github: "https://github.com/theroyallab/tabbyAPI" },
+  { name: "text-generation-webui (oobabooga)", description: "Ultimate LLM-UI mit 100+ Extensions", installCmd: "git clone https://github.com/oobabooga/text-generation-webui ~/text-gen && cd ~/text-gen && bash start.sh", category: "LLM Frontend", source: "git", github: "https://github.com/oobabooga/text-generation-webui" },
+  { name: "Llamafile", description: "Ein-Klick LLM-Ausfuehrung (Mojo/Rust)", installCmd: "yay -S llamafile", category: "LLM Engine", source: "yay", homepage: "https://llamafile.ai" },
+  { name: "Hugging Face CLI", description: "Model-Management & Download", installCmd: "pip install huggingface-hub", category: "Model Hub", source: "pip", github: "https://github.com/huggingface/huggingface_hub" },
+  { name: "Stable Diffusion WebUI Forge", description: "Optimierte SD-Forge mit better VRAM", installCmd: "git clone https://github.com/lllyasviel/stable-diffusion-webui-forge ~/sd-forge && cd ~/sd-forge && ./webui.sh", category: "Image Gen", source: "git", github: "https://github.com/lllyasviel/stable-diffusion-webui-forge" },
+  { name: "Fooocus", description: "SD-XL mit Midjourney-Style Prompting", installCmd: "git clone https://github.com/lllyasviel/Fooocus ~/Fooocus && cd ~/Fooocus && pip install -r requirements.txt", category: "Image Gen", source: "git", github: "https://github.com/lllyasviel/Fooocus" },
+  { name: "InvokeAI", description: "Professionelle Creative AI Suite", installCmd: "git clone https://github.com/invoke-ai/InvokeAI ~/InvokeAI && cd ~/InvokeAI && ./install.sh", category: "Image Gen", source: "git", github: "https://github.com/invoke-ai/InvokeAI" },
+  { name: "Whisper.cpp", description: "Ultra-schnelle Speech-to-Text (C++/CUDA)", installCmd: "git clone https://github.com/ggerganov/whisper.cpp ~/whisper.cpp && cd ~/whisper.cpp && make && bash ./build/bin/main -m base -f audio.wav", category: "Speech", source: "git", github: "https://github.com/ggerganov/whisper.cpp" },
+  { name: "Bark (Suno)", description: "Text-zu-Sprache (realistisch)", installCmd: "pip install git+https://github.com/suno-ai/bark.git", category: "TTS", source: "pip", github: "https://github.com/suno-ai/bark" },
+  { name: "Piper TTS", description: "Lokale Neural TTS (schnell)", installCmd: "yay -S piper-tts-bin", category: "TTS", source: "yay", github: "https://github.com/rhasspy/piper" },
+  { name: "Tortoise TTS", description: "Multi-Sprecher TTS (realistisch)", installCmd: "pip install tortoise-tts", category: "TTS", source: "pip", github: "https://github.com/neonbjb/tortoise-tts" },
+  { name: "ChatRTX", description: "NVIDIA lokaler Chatbot (RAG)", installCmd: "yay -S chatrtx", category: "RAG", source: "yay", homepage: "https://developer.nvidia.com/chatrtx" },
+  { name: "PrivateGPT", description: "100% private LLM mit RAG", installCmd: "pip install private-gpt", category: "RAG", source: "pip", github: "https://github.com/zylon-ai/private-gpt" },
+  { name: "LlamaIndex", description: "LLM Data-Framework (RAG-Orchestrierung)", installCmd: "pip install llama-index", category: "RAG", source: "pip", github: "https://github.com/run-llama/llama_index" },
+  { name: "LangChain", description: "LLM Application Framework", installCmd: "pip install langchain langchain-community", category: "Framework", source: "pip", github: "https://github.com/langchain-ai/langchain" },
+  { name: "Axolotl", description: "LLM Fine-Tuning (LoRA/QLoRA)", installCmd: "pip install axolotl", category: "Fine-Tuning", source: "pip", github: "https://github.com/OpenAccess-AI-Collective/axolotl" },
+  { name: "AutoGPT", description: "Autonomer KI-Agent", installCmd: "pip install autogpt", category: "Agent", source: "pip", github: "https://github.com/Significant-Gravitas/AutoGPT" },
+  { name: "CrewAI", description: "Multi-Agent Framework", installCmd: "pip install crewai", category: "Agent", source: "pip", github: "https://github.com/crewAIInc/crewAI" },
 ];
 
 // ============ Desktop Environment ============
@@ -228,6 +253,12 @@ export const desktopTools: Tool[] = [
     category: "Display Manager",
     source: "pacman",
   },
+  { name: "i3wm", description: "Klassischer Tiling Window Manager", installCmd: "sudo pacman -S i3-wm i3status i3lock dmenu", category: "Window Manager", source: "pacman" },
+  { name: "Sway", description: "i3-kompatibel fuer Wayland", installCmd: "sudo pacman -S sway swaybg swaybar swaylock swayidle grim slurp waybar", category: "Window Manager", source: "pacman", github: "https://github.com/swaywm/sway" },
+  { name: "bspwm", description: "Binary Space Partitioning WM", installCmd: "sudo pacman -S bspwm sxhkd polybar rofi", category: "Window Manager", source: "pacman" },
+  { name: "COSMIC Desktop", description: "System76 Desktop (Rust-basiert)", installCmd: "yay -S cosmic-session cosmic-panel cosmic-files cosmic-term", category: "Desktop", source: "yay" },
+  { name: "Budgie Desktop", description: "Elegant, leichtgewichtig", installCmd: "sudo pacman -S budgie-desktop budgie-desktop-applets", category: "Desktop", source: "pacman" },
+  { name: "XFCE 4", description: "Leichtgewichtig & stabil", installCmd: "sudo pacman -S xfce4 xfce4-goodies xfce4-whiskermenu-plugin", category: "Desktop", source: "pacman" },
 ];
 
 // ============ Themes & Design ============
@@ -302,6 +333,14 @@ export const themeTools: Tool[] = [
     category: "Icons",
     source: "pacman",
   },
+  { name: "Nordic KDE", description: "Nord-Polar Theme (dunkel, elegant)", installCmd: "yay -S nordic-kde-git", category: "Global Theme", source: "yay" },
+  { name: "Dracula Theme", description: "Dracula GTK + KDE Theme", installCmd: "yay -S dracula-gtk-theme dracula-kde", category: "Global Theme", source: "yay" },
+  { name: "Tela Icons", description: "Icon-Theme mit realistischen Farben", installCmd: "yay -S tela-icon-theme-bin", category: "Icons", source: "yay" },
+  { name: "Adwaita Dark", description: "GNOME-Standard Dark Theme", installCmd: "sudo pacman -S adwaita-dark", category: "Global Theme", source: "pacman" },
+  { name: "Graucho Icons", description: "Minimalistisches Icon-Set", installCmd: "yay -S graucho-icon-theme-git", category: "Icons", source: "yay" },
+  { name: "BeautyLine Icons", description: "BeautyLine KDE/GTK Icons", installCmd: "yay -S beautyline-icon-theme-git", category: "Icons", source: "yay" },
+  { name: "Colloid Theme", description: "Modernes GTK/KDE Theme", installCmd: "yay -S colloid-gtk-theme colloid-kde-theme-git", category: "Global Theme", source: "yay" },
+  { name: "Layan Theme", description: "Modernes KDE Theme (Hell/Dunkel)", installCmd: "yay -S layan-kde-git", category: "Global Theme", source: "yay" },
 ];
 
 // ============ Development ============
@@ -390,6 +429,21 @@ export const devTools: Tool[] = [
     category: "Containers",
     source: "yay",
   },
+  { name: "Cursor IDE", description: "AI-native Code Editor (VS Code Fork)", installCmd: "yay -S cursor-bin", category: "IDE", source: "yay", homepage: "https://cursor.sh" },
+  { name: "Sublime Text 4", description: "Blitzschneller Text-Editor", installCmd: "yay -S sublime-text-4", category: "Editor", source: "yay" },
+  { name: "Helix", description: "Post-modern Terminal-Editor (Rust)", installCmd: "sudo pacman -S helix", category: "Editor", source: "pacman", github: "https://github.com/helix-editor/helix" },
+  { name: "Zed Editor", description: "Rust-basierter Editor (Sublime-Alternative)", installCmd: "yay -S zed-editor-bin", category: "Editor", source: "yay", homepage: "https://zed.dev" },
+  { name: "GoLand", description: "JetBrains IDE fuer Go", installCmd: "yay -S goland", category: "IDE", source: "yay" },
+  { name: "RustRover", description: "JetBrains IDE fuer Rust", installCmd: "yay -S rustrover", category: "IDE", source: "yay" },
+  { name: "WebStorm", description: "JetBrains IDE fuer Web/JS/TS", installCmd: "yay -S webstorm", category: "IDE", source: "yay" },
+  { name: "Insomnia", description: "API-Testing-Tool (Open Source)", installCmd: "yay -S insomnia", category: "API", source: "yay", github: "https://github.com/Kong/insomnia" },
+  { name: "Hoppscotch", description: "Open Source API-Testing (Web)", installCmd: "yay -S hoppscotch-bin", category: "API", source: "yay", github: "https://github.com/hoppscotch/hoppscotch" },
+  { name: "Ansible", description: "Infrastructure as Code (Automatisierung)", installCmd: "sudo pacman -S ansible", category: "Automation", source: "pacman" },
+  { name: "Terraform", description: "Infrastructure as Code (Multi-Cloud)", installCmd: "yay -S terraform", category: "Infrastructure", source: "yay" },
+  { name: "K9s", description: "Kubernetes Terminal UI Manager", installCmd: "yay -S k9s", category: "Kubernetes", source: "yay", github: "https://github.com/derailed/k9s" },
+  { name: "Portainer", description: "Docker GUI Management (Web)", installCmd: "docker volume create portainer_data && docker run -d -p 8000:8000 -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest", category: "Containers", source: "custom", github: "https://github.com/portainer/portainer" },
+  { name: "GitHub CLI", description: "GitHub im Terminal (gh)", installCmd: "sudo pacman -S github-cli", category: "Git", source: "pacman" },
+  { name: "Meld", description: "Visueller Diff- und Merge-Tool", installCmd: "sudo pacman -S meld", category: "Diff", source: "pacman" },
 ];
 
 // ============ Terminal & Shell ============
@@ -471,6 +525,21 @@ export const terminalTools: Tool[] = [
     category: "System Info",
     source: "yay",
   },
+  { name: "Starship Prompt", description: "Minimaler, cooler Shell-Prompt", installCmd: "sudo pacman -S starship && echo 'eval \"$(starship init zsh)\"' >> ~/.zshrc", category: "Shell Theme", source: "pacman", github: "https://github.com/starship/starship" },
+  { name: "Zoxide", description: "Smarter cd (lernt von dir)", installCmd: "sudo pacman -S zoxide && echo 'eval \"$(zoxide init zsh)\"' >> ~/.zshrc", category: "CLI Tool", source: "pacman", github: "https://github.com/ajeetdsouza/zoxide" },
+  { name: "Delta", description: "Modernes Git-Diff (Syntax-Highlighting)", installCmd: "sudo pacman -S git-delta && git config --global core.pager delta", category: "CLI Tool", source: "pacman", github: "https://github.com/dandavison/delta" },
+  { name: "Ripgrep (rg)", description: "Ultra-schnelle Textsuche (grep-Alternative)", installCmd: "sudo pacman -S ripgrep", category: "CLI Tool", source: "pacman", github: "https://github.com/BurntSushi/ripgrep" },
+  { name: "fd", description: "Modernes find (schneller, einfacher)", installCmd: "sudo pacman -S fd", category: "CLI Tool", source: "pacman", github: "https://github.com/sharkdp/fd" },
+  { name: "Tealdeer", description: "Schnelle tldr-Pages (Community)", installCmd: "sudo pacman -S tealdeer && tealdeer --update", category: "CLI Tool", source: "pacman" },
+  { name: "Hexyl", description: "Hex-Viewer im Terminal", installCmd: "sudo pacman -S hexyl", category: "CLI Tool", source: "pacman" },
+  { name: "Bottom (btm)", description: "System-Monitor (htop-Alternative)", installCmd: "sudo pacman -S bottom", category: "Monitor", source: "pacman", github: "https://github.com/ClementTsang/bottom" },
+  { name: "Zellij", description: "Modernes Terminal-Multiplexer (Rust)", installCmd: "sudo pacman -S zellij", category: "Multiplexer", source: "pacman", github: "https://github.com/zellij-org/zellij" },
+  { name: "Atuin", description: "Shell-History Sync & Suche", installCmd: "sudo pacman -S atuin", category: "Shell Tool", source: "pacman", github: "https://github.com/atuinsh/atuin" },
+  { name: "Fig (Amazon Q)", description: "Autocomplete im Terminal", installCmd: "yay -S amazon-q-cli-bin", category: "Shell Tool", source: "yay" },
+  { name: "Glow", description: "Markdown-Viewer im Terminal", installCmd: "sudo pacman -S glow", category: "CLI Tool", source: "pacman", github: "https://github.com/charmbracelet/glow" },
+  { name: "Yazi", description: "Blitzschneller Terminal-File-Manager (Rust)", installCmd: "yay -S yazi", category: "File Manager", source: "yay", github: "https://github.com/sxyazi/yazi" },
+  { name: "Kalker", description: "Taschenrechner im Terminal", installCmd: "sudo pacman -S kalker", category: "CLI Tool", source: "pacman" },
+  { name: "Dust", description: "Modernes du (Festplatten-Analyse)", installCmd: "sudo pacman -S dust", category: "CLI Tool", source: "pacman", github: "https://github.com/bootandy/dust" },
 ];
 
 // ============ Performance ============
@@ -531,6 +600,16 @@ export const perfTools: Tool[] = [
     category: "Storage",
     source: "custom",
   },
+  { name: "GameMode + Feral", description: "System-Optimierung waehrend Gaming", installCmd: "yay -S gamemode lib32-gamemode && sudo systemctl enable gamemoded --now", category: "Gaming", source: "yay" },
+  { name: "ananicy-cpp", description: "Auto CPU Governor (Community)", installCmd: "yay -S ananicy-cpp && sudo systemctl enable ananicy-cpp --now", category: "CPU", source: "yay", github: "https://github.com/pythops/ananicy-cpp" },
+  { name: "irqbalance", description: "CPU-Interrupt-Balancing", installCmd: "sudo pacman -S irqbalance && sudo systemctl enable irqbalance --now", category: "CPU", source: "pacman" },
+  { name: "iopc", description: "I/O Priority Controller", installCmd: "yay -S iopc", category: "I/O", source: "yay" },
+  { name: "thermald", description: "CPU-Thermal Management", installCmd: "sudo pacman -S thermald && sudo systemctl enable thermald --now", category: "Thermal", source: "pacman" },
+  { name: "Auto-CPU Freq", description: "Automatische CPU-Frequenz-Skalierung", installCmd: "yay -S auto-cpufreq", category: "CPU", source: "yay", github: "https://github.com/AdnanHodzic/auto-cpufreq" },
+  { name: "Powersave/TuneD", description: "Profile-basierte System-Optimierung", installCmd: "sudo pacman -S tuned && sudo systemctl enable tuned --now", category: "Power", source: "pacman" },
+  { name: "Stacer", description: "System-Optimizer GUI", installCmd: "yay -S stacer", category: "Optimizer", source: "yay" },
+  { name: "Lact (AMD)", description: "AMD GPU Overclocking Tool", installCmd: "yay -S lact", category: "GPU", source: "yay" },
+  { name: "Greenclip", description: "Clipboard-Manager (GPU-beschleunigt)", installCmd: "yay -S greenclip", category: "Utility", source: "yay" },
 ];
 
 // ============ Gaming ============
@@ -612,6 +691,16 @@ export const gamingTools: Tool[] = [
     category: "Compatibility",
     source: "pacman",
   },
+  { name: "Bottles", description: "Wine-Prefix-Manager (Easy Gaming)", installCmd: "flatpak install flathub com.usebottles.bottles", category: "Compatibility", source: "flatpak", homepage: "https://usebottles.com" },
+  { name: "Prism Launcher", description: "Minecraft Launcher (Multi-Instanz)", installCmd: "sudo pacman -S prismlauncher", category: "Launcher", source: "pacman" },
+  { name: "Rare", description: "Legendary GUI (Epic Games CLI)", installCmd: "yay -S rare", category: "Launcher", source: "yay" },
+  { name: "Luxtorpeda", description: "Steam-Plugin fuer Game-Scripting", installCmd: "yay -S luxtorpeda", category: "Steam Plugin", source: "yay" },
+  { name: "ProtonUp-Qt", description: "Proton-Version-Manager (GUI)", installCmd: "yay -S protonup-qt", category: "Compatibility", source: "yay", github: "https://github.com/DavidoTek/ProtonUp-Qt" },
+  { name: "SteamTinkerLaunch", description: "Linux-Wrap fuer Steam-Spiele", installCmd: "yay -S steamtinkerlaunch", category: "Compatibility", source: "yay" },
+  { name: "Lutris-Wine-GE", description: "Gaming-optimierte Wine-Version", installCmd: "yay -S lutris-wine-meta", category: "Compatibility", source: "yay" },
+  { name: "OBS Studio + Plugins", description: "Streaming mit NVIDIA-Encoder", installCmd: "sudo pacman -S obs-studio obs-studio-plugin-obs-websocket wlrobs", category: "Recording", source: "pacman" },
+  { name: "Discord", description: "Gaming-Voice-Chat", installCmd: "yay -S discord", category: "Chat", source: "yay" },
+  { name: "Gamescope Sessions", description: "Valve Steam Deck Kompositor", installCmd: "yay -S gamescope-session-wayland gamescope-session-plus", category: "Performance", source: "yay" },
 ];
 
 // ============ Graphics & Design ============
@@ -625,6 +714,16 @@ export const graphicsTools: Tool[] = [
   { name: "Darktable", description: "RAW-Bildbearbeitung (Lightroom-Alternative)", installCmd: "sudo pacman -S darktable", category: "RAW", source: "pacman" },
   { name: "RawTherapee", description: "RAW-Bildbearbeitung", installCmd: "sudo pacman -S rawtherapee", category: "RAW", source: "pacman" },
   { name: "Scribus", description: "Desktop-Publishing", installCmd: "sudo pacman -S scribus", category: "DTP", source: "pacman" },
+  { name: "Photoshop via Bottles", description: "Adobe Photoshop CC in Wine", installCmd: "flatpak install flathub com.usebottles.bottles && bottles import photoshop", category: "Photo Editing", source: "flatpak" },
+  { name: "Nomacs", description: "Bildbetrachter (Qt, schnell)", installCmd: "sudo pacman -S nomacs", category: "Viewer", source: "pacman" },
+  { name: "XnView MP", description: "Bild-Organizer & Viewer", installCmd: "yay -S xnviewmp", category: "Viewer", source: "yay" },
+  { name: "Hugin", description: "Panorama-Stitching (FOSS)", installCmd: "sudo pacman -S hugin", category: "Panorama", source: "pacman" },
+  { name: "Enblend", description: "Image Blending Tool", installCmd: "sudo pacman -S enblend-enfuse", category: "Panorama", source: "pacman" },
+  { name: "FontForge", description: "Schriftart-Editor (FOSS)", installCmd: "sudo pacman -S fontforge", category: "Fonts", source: "pacman" },
+  { name: "Pencil2D", description: "2D-Animation (traditionell)", installCmd: "sudo pacman -S pencil2d", category: "Animation", source: "pacman" },
+  { name: "Synfig Studio", description: "2D-Animation (Vektor-basiert)", installCmd: "sudo pacman -S synfig-studio", category: "Animation", source: "pacman" },
+  { name: "Natron", description: "Node-basierter Video-Compositor", installCmd: "yay -S natron", category: "Compositing", source: "yay" },
+  { name: "digiKam", description: "Professionelle Foto-Verwaltung", installCmd: "sudo pacman -S digikam", category: "Photo Manager", source: "pacman" },
 ];
 
 // ============ Audio & Video Players ============
@@ -638,6 +737,16 @@ export const mediaTools: Tool[] = [
   { name: "Strawberry", description: "Clementine-Fork (Modern)", installCmd: "yay -S strawberry", category: "Music Player", source: "yay" },
   { name: "Clementine", description: "Qt-basierter Musikplayer", installCmd: "sudo pacman -S clementine", category: "Music Player", source: "pacman" },
   { name: "PipeWire", description: "Audio-Server (Wayland-kompatibel)", installCmd: "sudo pacman -S pipewire pipewire-pulse wireplumber && sudo systemctl enable --now pipewire pipewire-pulse wireplumber", category: "Audio Server", source: "pacman" },
+  { name: "OBS Studio", description: "Streaming & Recording (NVIDIA NVENC)", installCmd: "sudo pacman -S obs-studio", category: "Streaming", source: "pacman" },
+  { name: "Audiotube", description: "YouTube Music Client (Qt)", installCmd: "yay -S audiotube", category: "Music Player", source: "yay" },
+  { name: "Spotube", description: "Spotify Client ohne Premium", installCmd: "yay -S spotube", category: "Music Player", source: "yay", github: "https://github.com/KRTirtho/spotube" },
+  { name: "Celluloid", description: "MPV-Frontend (GTK-basiert)", installCmd: "sudo pacman -S celluloid", category: "Video Player", source: "pacman" },
+  { name: "Tenacity", description: "Audacity-Fork (offen)", installCmd: "yay -S tenacity", category: "Audio Editor", source: "yay" },
+  { name: "MuseScore", description: "Notensatz-Software", installCmd: "sudo pacman -S musescore", category: "Music", source: "pacman" },
+  { name: "Mixxx", description: "DJ-Software ( professionell)", installCmd: "sudo pacman -S mixxx", category: "DJ", source: "pacman" },
+  { name: "Qsynth", description: "FluidSynth GUI (Soundfont-Player)", installCmd: "sudo pacman -S qsynth fluidsynth", category: "Audio Synth", source: "pacman" },
+  { name: "Helvum", description: "Audio/PipeWire Patchbay", installCmd: "yay -S helvum", category: "Audio Routing", source: "yay" },
+  { name: "EasyEffects", description: "PipeWire Audio-Effects (LADSPA/LV2)", installCmd: "sudo pacman -S easyeffects", category: "Audio FX", source: "pacman", github: "https://github.com/wwmm/easyeffects" },
 ];
 
 // ============ Network & VPN ============
@@ -652,6 +761,16 @@ export const networkTools: Tool[] = [
   { name: "FileZilla", description: "FTP/SFTP-Client", installCmd: "sudo pacman -S filezilla", category: "FTP", source: "pacman" },
   { name: "SSH + Mosh", description: "SSH mit besserer Latenz", installCmd: "sudo pacman -S openssh mosh && sudo systemctl enable sshd --now", category: "SSH", source: "pacman" },
   { name: "Rclone", description: "Cloud-Sync (Google Drive, Dropbox, etc.)", installCmd: "sudo pacman -S rclone", category: "Cloud", source: "pacman" },
+  { name: "Tailscale", description: "Mesh VPN (Zero-Config WireGuard)", installCmd: "yay -S tailscale && sudo systemctl enable tailscaled --now", category: "VPN", source: "yay", homepage: "https://tailscale.com" },
+  { name: "Pi-hole", description: "Netzwerk-weite Werbeblocker (Docker)", installCmd: "docker run -d --name pihole -e TZ=Europe/Berlin -p 80:80 -p 53:53 -p 53:53/udp pihole/pihole:latest", category: "DNS", source: "custom" },
+  { name: "Cloudflare WARP", description: "1.1.1.1 VPN & DNS", installCmd: "yay -S cloudflare-warp-bin && warp-cli register && warp-cli connect", category: "VPN", source: "yay" },
+  { name: "mtr", description: "Traceroute + Ping kombiniert", installCmd: "sudo pacman -S mtr", category: "Diagnostics", source: "pacman" },
+  { name: "Speedtest CLI", description: "Internet-Geschwindigkeit testen", installCmd: "yay -S speedtest-cli", category: "Speed", source: "yay" },
+  { name: "Transmission", description: "BitTorrent-Client (GUI + CLI)", installCmd: "sudo pacman -S transmission-gtk transmission-cli", category: "Torrent", source: "pacman" },
+  { name: "qBittorrent", description: "BitTorrent-Client (Qt)", installCmd: "sudo pacman -S qbittorrent", category: "Torrent", source: "pacman" },
+  { name: "Airgeddon", description: "WLAN-Audit-Tool", installCmd: "git clone https://github.com/v1s1t0r1sh3r3/airgeddon.git ~/airgeddon", category: "WiFi", source: "git", github: "https://github.com/v1s1t0r1sh3r3/airgeddon" },
+  { name: "Ettercap", description: "Man-in-the-Middle Analyse", installCmd: "sudo pacman -S ettercap-graphical", category: "Analysis", source: "pacman" },
+  { name: "Cloudflared", description: "Cloudflare Tunnel (Expose Local)", installCmd: "yay -S cloudflared", category: "Tunnel", source: "yay", homepage: "https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/" },
 ];
 
 // ============ Security ============
@@ -668,6 +787,16 @@ export const securityTools: Tool[] = [
   { name: "Tor Browser", description: "Anonymer Browser", installCmd: "yay -S tor-browser", category: "Privacy", source: "yay" },
   { name: "Signal", description: "Messenger (E2E-Verschluesselung)", installCmd: "yay -S signal-desktop", category: "Messenger", source: "yay" },
   { name: "Element", description: "Matrix-Client", installCmd: "yay -S element-desktop", category: "Messenger", source: "yay" },
+  { name: "Tails", description: "Amnesic Live System (USB)", installCmd: "yay -S tails", category: "Live OS", source: "yay", homepage: "https://tails.net" },
+  { name: "Pass", description: "Password Manager (CLI, GPG)", installCmd: "sudo pacman -S pass", category: "Passwords", source: "pacman" },
+  { name: "Nessus", description: "Vulnerability Scanner (Home)", installCmd: "yay -S nessus", category: "Scanner", source: "yay" },
+  { name: "Tripwire", description: "File Integrity Monitor", installCmd: "sudo pacman -S tripwire", category: "FIM", source: "pacman" },
+  { name: "Iptables-nft", description: "Firewall (nftables-basiert)", installCmd: "sudo pacman -S iptables-nft", category: "Firewall", source: "pacman" },
+  { name: "UFW", description: "Uncomplicated Firewall", installCmd: "sudo pacman -S ufw && sudo ufw enable", category: "Firewall", source: "pacman" },
+  { name: "CrowdSec", description: "Collaborative Intrusion Prevention", installCmd: "yay -S crowdsec", category: "IPS", source: "yay", github: "https://github.com/crowdsecurity/crowdsec" },
+  { name: "Yubico Authenticator", description: "2FA mit YubiKey", installCmd: "yay -S yubioath-desktop", category: "2FA", source: "yay" },
+  { name: "Keybase", description: "Verschluesselte Kommunikation", installCmd: "yay -S keybase-gui", category: "Encryption", source: "yay" },
+  { name: "OnionShare", description: "Dateien anonym teilen (Tor)", installCmd: "yay -S onionshare", category: "Privacy", source: "yay", github: "https://github.com/onionshare/onionshare" },
 ];
 
 // ============ System Tools ============
@@ -687,6 +816,16 @@ export const systemTools: Tool[] = [
   { name: "Okular", description: "PDF-Viewer (KDE)", installCmd: "sudo pacman -S okular", category: "PDF", source: "pacman" },
   { name: "Obsidian", description: "Markdown-Notiz-App (lokal)", installCmd: "yay -S obsidian", category: "Notes", source: "yay" },
   { name: "Joplin", description: "Notiz-App (Markdown, E2E)", installCmd: "yay -S joplin-desktop", category: "Notes", source: "yay" },
+  { name: "SpaceVim", description: "Vim Distribution (IDE-Like)", installCmd: "curl -sLf https://spacevim.org/install.sh | bash", category: "Editor", source: "custom" },
+  { name: "Btop++", description: "Moderner System-Monitor (C++)", installCmd: "sudo pacman -S btop", category: "Monitor", source: "pacman", github: "https://github.com/aristocratos/btop" },
+  { name: "KSystemLog", description: "KDE Log-Viewer", installCmd: "sudo pacman -S ksystemlog", category: "Logs", source: "pacman" },
+  { name: "Back In Time", description: "Einfaches Backup (rsync + hardlinks)", installCmd: "sudo pacman -S backintime-qt", category: "Backup", source: "pacman" },
+  { name: "Restic", description: "Sichere, effiziente Backups", installCmd: "sudo pacman -S restic", category: "Backup", source: "pacman" },
+  { name: "KDiskMark", description: "SSD/HDD Benchmark (KDE)", installCmd: "sudo pacman -S kdiskmark", category: "Benchmark", source: "pacman" },
+  { name: "Fio", description: "I/O Benchmark Tool (Terminal)", installCmd: "sudo pacman -S fio", category: "Benchmark", source: "pacman" },
+  { name: "Stacer", description: "System-Optimizer & Cleaner", installCmd: "yay -S stacer", category: "Optimizer", source: "yay" },
+  { name: "BleachBit", description: "System-Cleaner (CCleaner-Alternative)", installCmd: "sudo pacman -S bleachbit", category: "Cleaner", source: "pacman" },
+  { name: "Geeqie", description: "Bildbetrachter & Organizer", installCmd: "sudo pacman -S geeqie", category: "Viewer", source: "pacman" },
 ];
 
 // ============ Desktop Shortcuts (.desktop files) ============
@@ -938,6 +1077,16 @@ export const ollamaModels = [
   { name: "gemma2:9b", size: "5.5 GB", description: "Google Gemma 2 - Neu & stark" },
   { name: "qwen2.5:7b", size: "4.4 GB", description: "Alibaba Qwen 2.5 - Multilingual" },
   { name: "deepseek-coder:6.7b", size: "3.8 GB", description: "DeepSeek Coder - Code-Spezialist" },
+  { name: "llama3.1:8b", size: "4.9 GB", description: "Meta Llama 3.1 - Latest" },
+  { name: "mistral-nemo:12b", size: "7.2 GB", description: "Mistral Nemo - 128K Kontext" },
+  { name: "qwen2.5-coder:7b", size: "4.4 GB", description: "Qwen Coder - Code-Spezialist" },
+  { name: "llama3.3:70b-q4", size: "40 GB", description: "Llama 3.3 70B - Quantisiert" },
+  { name: "phi4:14b", size: "8.8 GB", description: "Microsoft Phi-4 - Reasoning" },
+  { name: "gemma2:27b-q4", size: "15.7 GB", description: "Google Gemma 2 27B - Stark" },
+  { name: "deepseek-r1:14b-q4", size: "9.2 GB", description: "DeepSeek R1 - Reasoning" },
+  { name: "mistral-small:24b", size: "14.5 GB", description: "Mistral Small - Effizient" },
+  { name: "codestral:22b", size: "13.2 GB", description: "Mistral Codestral - Code" },
+  { name: "starling-lm:7b-beta", size: "4.1 GB", description: "Starling - RLHF verfeinert" },
 ];
 
 // ============ Anti-Gravity CLI Mega System-Optimizer v3.0 ============
@@ -964,6 +1113,16 @@ export const antigravityCliTools: Tool[] = [
   { name: "Antigravity Harness", description: "Multi-Agent Team", installCmd: "git clone https://github.com/antigravity-research/antigravity-cli-harness ~/.local/share/antigravity-cli-harness && cd ~/.local/share/antigravity-cli-harness && npm install && npm link", category: "Multi-Agent", source: "git" },
   { name: "Oh-My-Antigravity (oma)", description: "Workflow Pack", installCmd: "git clone https://github.com/antigravity-research/oh-my-antigravity ~/.local/share/oh-my-antigravity && cd ~/.local/share/oh-my-antigravity && npm install && npm link", category: "Workflows", source: "git" },
   { name: "Ollama (lokale LLMs)", description: "Llama 3, Mistral, Phi-3 lokal", installCmd: "yay -S ollama && ollama pull llama3:8b", category: "LLM Engine", source: "yay", github: "https://github.com/ollama/ollama" },
+  { name: "Continue.dev", description: "Open Source AI Coding Assistant (VS Code)", installCmd: "npm install -g @continue/cli", category: "IDE AI", source: "npm", github: "https://github.com/continuedev/continue" },
+  { name: "Open Interpreter", description: "KI-Terminal-Agent (Code-Ausfuehrung)", installCmd: "pip install open-interpreter", category: "Agent", source: "pip", github: "https://github.com/OpenInterpreter/open-interpreter" },
+  { name: "Phind Model", description: "Dev-spezifischer LLM Agent", installCmd: "npm install -g @phind/model", category: "Developer AI", source: "npm" },
+  { name: "Tabby", description: "Self-hosted AI Coding Assistant", installCmd: "docker run -d -p 8080:8080 tabbyml/tabby", category: "IDE AI", source: "custom", github: "https://github.com/TabbyML/tabby" },
+  { name: "Codeium", description: "AI Code Completion (Open Source)", installCmd: "yay -S codeium", category: "IDE AI", source: "yay" },
+  { name: "Twinny", description: "VS Code AI Plugin (Ollama)", installCmd: "yay -S twinny", category: "IDE AI", source: "yay" },
+  { name: "Devika", description: "Open Source Devin-Alternative", installCmd: "git clone https://github.com/stitionai/devika.git ~/devika && cd ~/devika && pip install -r requirements.txt", category: "Agent", source: "git", github: "https://github.com/stitionai/devika" },
+  { name: "OpenDevin", description: "Autonomer Software-Entwickler", installCmd: "git clone https://github.com/opendevin/opendevin.git ~/opendevin && cd ~/opendevin && pip install -r requirements.txt", category: "Agent", source: "git", github: "https://github.com/opendevin/opendevin" },
+  { name: "Cline (Claude Dev)", description: "Autonomous Coding Agent (VS Code)", installCmd: "npm install -g @cline/cline", category: "Agent", source: "npm" },
+  { name: "PearAI", description: "AI-native Open Source IDE", installCmd: "yay -S pearai-bin", category: "IDE AI", source: "yay" },
 ];
 
 // ============ GitHub Repositories ============
@@ -990,6 +1149,16 @@ export const githubRepos: GitHubRepo[] = [
   { name: "antigravity-code", description: "Multi-Provider Code CLI", url: "https://github.com/antigravity-research/antigravity-code", installDir: "~/Projects/antigravity-repos/antigravity-code", category: "Multi-Provider" },
   { name: "vibe-coding-config", description: "Vibe Coding Konfiguration", url: "https://github.com/antigravity-research/vibe-coding-config", installDir: "~/Projects/antigravity-repos/vibe-coding-config", category: "Config" },
   { name: "antigravity-setup-scripts", description: "Automatische Setup-Skripte", url: "https://github.com/antigravity-research/antigravity-setup-scripts", installDir: "~/Projects/antigravity-repos/antigravity-setup-scripts", category: "Setup" },
+  { name: "awesome-linux-software", description: "Curated Linux Software List", url: "https://github.com/luong-komorebi/Awesome-Linux-Software", installDir: "~/Projects/awesome/linux-software", category: "Awesome List" },
+  { name: "awesome-selfhosted", description: "Self-Hosted Software Directory", url: "https://github.com/awesome-selfhosted/awesome-selfhosted", installDir: "~/Projects/awesome/selfhosted", category: "Awesome List" },
+  { name: "awesome-cli-apps", description: "CLI Apps Collection", url: "https://github.com/agarrharr/awesome-cli-apps", installDir: "~/Projects/awesome/cli-apps", category: "Awesome List" },
+  { name: "awesome-wayland", description: "Wayland Resources List", url: "https://github.com/rcalixte/awesome-wayland", installDir: "~/Projects/awesome/wayland", category: "Awesome List" },
+  { name: "awesome-kde", description: "KDE Apps & Extensions", url: "https://github.com/francoism90/awesome-kde", installDir: "~/Projects/awesome/kde", category: "Awesome List" },
+  { name: "awesome-llm", description: "Large Language Model Resources", url: "https://github.com/hannibal046/Awesome-LLM", installDir: "~/Projects/awesome/llm", category: "Awesome List" },
+  { name: "awesome-local-ai", description: "Local AI Tools Collection", url: "https://github.com/janhq/awesome-local-ai", installDir: "~/Projects/awesome/local-ai", category: "Awesome List" },
+  { name: "neovim-ai-plugins", description: "Neovim AI Plugin Directory", url: "https://github.com/ColinKennedy/neovim-ai-plugins", installDir: "~/Projects/awesome/nvim-ai", category: "Neovim" },
+  { name: "hyprland-wiki", description: "Hyprland Official Wiki", url: "https://github.com/hyprwm/hyprland-wiki", installDir: "~/Projects/wiki/hyprland", category: "Wiki" },
+  { name: "archlinux-awesome", description: "Arch Linux Awesome Configs", url: "https://github.com/awesome-streamers/awesome-streamerrc", installDir: "~/Projects/awesome/awesomewm", category: "Window Manager" },
 ];
 
 // ============ Deep Web & Search Tools ============
@@ -1047,4 +1216,96 @@ export const essentialCliTools: Tool[] = [
   { name: "micro", description: "Terminal-Texteditor (Go)", installCmd: "yay -S micro", category: "Editor", source: "yay" },
   { name: "glow", description: "Markdown Renderer (CLI)", installCmd: "yay -S glow", category: "Markdown", source: "yay" },
   { name: "ncdu", description: "Disk-Usage Analyzer (NCurses)", installCmd: "sudo pacman -S ncdu", category: "Disk", source: "pacman" },
+];
+
+// ============ Browser & Web ============
+export const browserTools: Tool[] = [
+  { name: "Brave Browser", description: "Privacy-First Browser (Chromium-basiert)", installCmd: "yay -S brave-bin", category: "Browser", source: "yay", homepage: "https://brave.com" },
+  { name: "Firefox", description: "Open Source Browser (Privacy-fokussiert)", installCmd: "sudo pacman -S firefox", category: "Browser", source: "pacman" },
+  { name: "Vivaldi", description: "Power-User Browser (Chromium)", installCmd: "yay -S vivaldi", category: "Browser", source: "yay", homepage: "https://vivaldi.com" },
+  { name: "Thorium Browser", description: "Schnellster Chromium-Fork", installCmd: "yay -S thorium-browser-bin", category: "Browser", source: "yay", github: "https://github.com/Alex313031/thorium" },
+  { name: "LibreWolf", description: "Firefox Fork (Privacy-maximal)", installCmd: "yay -S librewolf-bin", category: "Browser", source: "yay", github: "https://github.com/librewolf-community/librewolf" },
+  { name: "Waterfox", description: "Firefox Fork (Flexibilitaet)", installCmd: "yay -S waterfox-bin", category: "Browser", source: "yay", homepage: "https://waterfox.net" },
+  { name: "Mullvad Browser", description: "Tor ohne Tor-Netzwerk", installCmd: "yay -S mullvad-browser-bin", category: "Browser", source: "yay" },
+  { name: "Floorp Browser", description: "Firefox Fork (Japan, viele Features)", installCmd: "yay -S floorp-bin", category: "Browser", source: "yay" },
+  { name: "uBlock Origin", description: "Werbeblocker (Firefox/Chrome)", installCmd: "sudo pacman -S ublock-origin", category: "Extension", source: "pacman" },
+  { name: "Dark Reader", description: "Dark Mode fuer alle Websites", installCmd: "yay -S firefox-dark-reader", category: "Extension", source: "yay" },
+  { name: "Bitwarden Browser", description: "Passwort-Manager Browser-Extension", installCmd: "yay -S bitwarden", category: "Extension", source: "yay" },
+  { name: "Privacy Badger", description: "Tracker-Blocker (EFF)", installCmd: "yay -S privacy-badger", category: "Extension", source: "yay" },
+];
+
+// ============ Wayland & WL Tools ============
+export const waylandTools: Tool[] = [
+  { name: "Waybar", description: "Highly Customizable Wayland Bar", installCmd: "sudo pacman -S waybar", category: "Bar", source: "pacman", github: "https://github.com/Alexays/Waybar" },
+  { name: "Rofi-Wayland", description: "Application Launcher (Wayland)", installCmd: "yay -S rofi-wayland", category: "Launcher", source: "yay" },
+  { name: "Fuzzel", description: "Application Launcher (Wayland-native)", installCmd: "sudo pacman -S fuzzel", category: "Launcher", source: "pacman", github: "https://codeberg.org/dnkl/fuzzel" },
+  { name: "Wofi", description: "GTK Application Launcher (Wayland)", installCmd: "sudo pacman -S wofi", category: "Launcher", source: "pacman" },
+  { name: "Mako", description: "Notification Daemon (Wayland)", installCmd: "sudo pacman -S mako", category: "Notifications", source: "pacman", github: "https://github.com/emersion/mako" },
+  { name: "SwayNC", description: "Notification Center (Wayland)", installCmd: "sudo pacman -S sway-notification-center", category: "Notifications", source: "pacman" },
+  { name: "Grim + Slurp", description: "Screenshot Tools (Wayland)", installCmd: "sudo pacman -S grim slurp", category: "Screenshot", source: "pacman" },
+  { name: "swaylock-effects", description: "Lockscreen mit Effekten (Wayland)", installCmd: "yay -S swaylock-effects", category: "Lockscreen", source: "yay" },
+  { name: "wf-recorder", description: "Screen Recording (Wayland)", installCmd: "sudo pacman -S wf-recorder", category: "Recording", source: "pacman" },
+  { name: "wl-clipboard", description: "Clipboard-Manager (Wayland)", installCmd: "sudo pacman -S wl-clipboard", category: "Clipboard", source: "pacman" },
+  { name: "yambar", description: "Modular Status Bar (C)", installCmd: "yay -S yambar", category: "Bar", source: "yay", github: "https://codeberg.org/dnkl/yambar" },
+  { name: "eww", description: "ElKowars wacky widgets (GTK)", installCmd: "yay -S eww-wayland", category: "Widgets", source: "yay", github: "https://github.com/elkowar/eww" },
+  { name: "hyprpicker", description: "Color Picker (Hyprland)", installCmd: "yay -S hyprpicker", category: "Utility", source: "yay" },
+  { name: "waypaper", description: "Wallpaper-Manager (Wayland)", installCmd: "yay -S waypaper", category: "Utility", source: "yay" },
+  { name: "nwg-look", description: "GTK Theme Switcher (Wayland)", installCmd: "yay -S nwg-look", category: "Theme", source: "yay" },
+  { name: "swaybg", description: "Wallpaper Setter (Sway/Wayland)", installCmd: "sudo pacman -S swaybg", category: "Wallpaper", source: "pacman" },
+  { name: "foot", description: "Leichtgewichtiger Terminal (Wayland)", installCmd: "sudo pacman -S foot", category: "Terminal", source: "pacman" },
+  { name: "Satty", description: "Screenshot-Annotator (Wayland)", installCmd: "yay -S satty", category: "Screenshot", source: "yay" },
+];
+
+// ============ Self-Hosted ============
+export const selfhostedTools: Tool[] = [
+  { name: "Nextcloud", description: "Private Cloud (Dropbox-Alternative)", installCmd: "docker run -d -p 8080:80 nextcloud", category: "Cloud", source: "custom", homepage: "https://nextcloud.com" },
+  { name: "Immich", description: "Google Photos-Alternative (Self-Hosted)", installCmd: "docker compose -f https://raw.githubusercontent.com/immich-app/immich/main/docker-compose.yml up -d", category: "Photos", source: "custom", github: "https://github.com/immich-app/immich" },
+  { name: "Vaultwarden", description: "Lightweight Bitwarden Server", installCmd: "docker run -d --name vaultwarden -v /vw-data/:/data/ -p 8081:80 vaultwarden/server:latest", category: "Passwords", source: "custom", github: "https://github.com/dani-garcia/vaultwarden" },
+  { name: "Jellyfin", description: "Media Server (Plex-Alternative)", installCmd: "docker run -d -p 8096:8096 -v /config:/config -v /media:/media jellyfin/jellyfin", category: "Media", source: "custom", homepage: "https://jellyfin.org" },
+  { name: "Plex", description: "Media Server (Premium)", installCmd: "docker run -d -p 32400:32400 -p 1900:1900/udp -p 5353:5353/udp plexinc/pms-docker:latest", category: "Media", source: "custom" },
+  { name: "Home Assistant", description: "Smart Home Automation", installCmd: "docker run -d --name homeassistant -p 8123:8123 homeassistant/home-assistant:stable", category: "Smart Home", source: "custom", homepage: "https://home-assistant.io" },
+  { name: "Grafana", description: "Monitoring Dashboard", installCmd: "docker run -d -p 3000:3000 grafana/grafana", category: "Monitoring", source: "custom", homepage: "https://grafana.com" },
+  { name: "Uptime Kuma", description: "Uptime Monitor (Beautiful UI)", installCmd: "docker run -d -p 3001:3001 louislam/uptime-kuma:1", category: "Monitoring", source: "custom", github: "https://github.com/louislam/uptime-kuma" },
+  { name: "Stirling PDF", description: "PDF-Tools (Self-Hosted)", installCmd: "docker run -d -p 8082:8080 frooodle/s-pdf:latest", category: "PDF", source: "custom", github: "https://github.com/Stirling-Tools/Stirling-PDF" },
+  { name: "Alist", description: "Multi-Cloud File Manager", installCmd: "docker run -d -p 5244:5244 xhofe/alist:latest", category: "Files", source: "custom", github: "https://github.com/alist-org/alist" },
+  { name: "Memos", description: "Self-hosted Memo-App", installCmd: "docker run -d -p 5230:5230 neosmemo/memos:latest", category: "Notes", source: "custom", github: "https://github.com/usememos/memos" },
+  { name: "Hoarder", description: "AI Bookmark-Manager", installCmd: "docker run -d -p 3000:3000 ghcr.io/hoarder-app/hoarder:latest", category: "Bookmarks", source: "custom" },
+  { name: "Paperless-ngx", description: "Dokumenten-Management", installCmd: "docker compose -f https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/main/docker-compose.yml up -d", category: "Documents", source: "custom", homepage: "https://paperless-ngx.com" },
+  { name: "Tandoor Recipes", description: "Rezept-Verwaltung", installCmd: "docker run -d -p 8085:80 vabene1111/recipes", category: "Recipes", source: "custom", github: "https://github.com/vabene1111/recipes" },
+  { name: "Changedetection.io", description: "Website-Aenderungen ueberwachen", installCmd: "docker run -d -p 5000:5000 dgtlmoon/changedetection.io", category: "Monitoring", source: "custom" },
+];
+
+// ============ DevOps & Infra ============
+export const devopsTools: Tool[] = [
+  { name: "Docker Compose", description: "Multi-Container Orchestration", installCmd: "sudo pacman -S docker-compose", category: "Containers", source: "pacman" },
+  { name: "K3s", description: "Lightweight Kubernetes", installCmd: "curl -sfL https://get.k3s.io | sh -", category: "Kubernetes", source: "custom", homepage: "https://k3s.io" },
+  { name: "Podman Desktop", description: "Podman GUI (Docker-Alternative)", installCmd: "yay -S podman-desktop", category: "Containers", source: "yay" },
+  { name: "Skopeo", description: "Container Image Management", installCmd: "sudo pacman -S skopeo", category: "Containers", source: "pacman" },
+  { name: "Buildah", description: "OCI Container Builder", installCmd: "sudo pacman -S buildah", category: "Containers", source: "pacman" },
+  { name: "Vagrant", description: "Dev-Umgebungen (Virtualbox/libvirt)", installCmd: "sudo pacman -S vagrant", category: "VM", source: "pacman" },
+  { name: "Pulumi", description: "Infrastructure as Code (Multi-Lang)", installCmd: "yay -S pulumi-bin", category: "Infrastructure", source: "yay", homepage: "https://pulumi.com" },
+  { name: "Helm", description: "Kubernetes Package Manager", installCmd: "yay -S helm", category: "Kubernetes", source: "yay" },
+  { name: "ArgoCD", description: "GitOps CD for Kubernetes", installCmd: "yay -S argocd", category: "GitOps", source: "yay" },
+  { name: "Flux", description: "GitOps Tool for Kubernetes", installCmd: "yay -S flux-bin", category: "GitOps", source: "yay" },
+  { name: "Jaeger", description: "Distributed Tracing", installCmd: "docker run -d -p 16686:16686 jaegertracing/all-in-one:latest", category: "Monitoring", source: "custom" },
+  { name: "Prometheus", description: "Monitoring & Alerting", installCmd: "docker run -d -p 9090:9090 prom/prometheus", category: "Monitoring", source: "custom", homepage: "https://prometheus.io" },
+  { name: "cAdvisor", description: "Container Monitoring", installCmd: "docker run -d -p 8080:8080 google/cadvisor:latest", category: "Monitoring", source: "custom" },
+  { name: "Traefik", description: "Cloud-Native Edge Router / Reverse Proxy", installCmd: "docker run -d -p 80:80 -p 8080:8080 traefik:v3.0", category: "Reverse Proxy", source: "custom", homepage: "https://traefik.io" },
+  { name: "Caddy", description: "HTTP/2 Web Server (Auto-HTTPS)", installCmd: "yay -S caddy", category: "Web Server", source: "yay", homepage: "https://caddyserver.com" },
+];
+
+// ============ Privacy & Anonym ============
+export const privacyTools: Tool[] = [
+  { name: "Tor Browser Bundle", description: "Anonymer Browser (Onion-Routing)", installCmd: "yay -S tor-browser", category: "Browser", source: "yay" },
+  { name: "I2P", description: "Anonymous Overlay Network", installCmd: "sudo pacman -S i2pd", category: "Network", source: "pacman" },
+  { name: "Tailscale", description: "Zero-Config Mesh VPN (WireGuard)", installCmd: "yay -S tailscale && sudo systemctl enable tailscaled --now", category: "VPN", source: "yay" },
+  { name: "Pi-hole", description: "Netzwerk-Werbeblocker (DNS)", installCmd: "docker run -d --name pihole -e TZ=Europe/Berlin -p 80:80 -p 53:53 -p 53:53/udp pihole/pihole:latest", category: "DNS", source: "custom" },
+  { name: "AdGuard Home", description: "DNS-Sinkhole & Werbeblocker", installCmd: "docker run -d --name adguard -p 3000:3000 adguard/adguardhome:latest", category: "DNS", source: "custom", homepage: "https://adguard.com" },
+  { name: "NextDNS", description: "Cloud-DNS (Privacy + Parental)", installCmd: "yay -S nextdns", category: "DNS", source: "yay" },
+  { name: "Encrypted DNS (DoH)", description: "DNS-over-HTTPS (systemd-resolved)", installCmd: "sudo pacman -S systemd-resolved && sudo systemctl enable systemd-resolved", category: "DNS", source: "pacman" },
+  { name: "MAC Changer", description: "MAC-Adresse aendern", installCmd: "sudo pacman -S macchanger", category: "Identity", source: "pacman" },
+  { name: "Proxychains-ng", description: "Proxy-Fuercing fuer Apps", installCmd: "sudo pacman -S proxychains-ng", category: "Proxy", source: "pacman" },
+  { name: "Whonix Gateway", description: "Isolierte Tor-VM", installCmd: "yay -S whonix-gateway", category: "Isolation", source: "yay" },
+  { name: "FileVault (LUKS)", description: "Full-Disk-Verschluesselung", installCmd: "sudo pacman -S cryptsetup && sudo cryptsetup luksFormat /dev/nvme0n1", category: "Encryption", source: "pacman" },
+  { name: "Obfs4Proxy", description: "Tor Bridge (Zensur-Umgehung)", installCmd: "yay -S obfs4proxy", category: "Tor", source: "yay" },
 ];

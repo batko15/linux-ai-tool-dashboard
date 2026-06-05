@@ -16,6 +16,8 @@ const sourceColors: Record<string, string> = {
   flatpak: "bg-sky-500/20 text-sky-400 border-sky-500/30",
   git: "bg-violet-500/20 text-violet-400 border-violet-500/30",
   pip: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
+  npm: "bg-red-500/20 text-red-400 border-red-500/30",
+  cargo: "bg-orange-500/20 text-orange-400 border-orange-500/30",
   custom: "bg-rose-500/20 text-rose-400 border-rose-500/30",
 };
 
@@ -128,6 +130,95 @@ const categoryColors: Record<string, string> = {
   Markdown: "bg-violet-500/15 text-violet-400",
   Disk: "bg-amber-500/15 text-amber-400",
   System: "bg-slate-500/15 text-slate-400",
+  // Browser categories
+  Browser: "bg-sky-500/15 text-sky-400",
+  Extension: "bg-violet-500/15 text-violet-400",
+  // Wayland categories
+  Bar: "bg-cyan-500/15 text-cyan-400",
+  Launcher: "bg-sky-500/15 text-sky-400",
+  Notifications: "bg-amber-500/15 text-amber-400",
+  Screenshot: "bg-pink-500/15 text-pink-400",
+  Lockscreen: "bg-violet-500/15 text-violet-400",
+  Recording: "bg-rose-500/15 text-rose-400",
+  Clipboard: "bg-green-500/15 text-green-400",
+  Widgets: "bg-fuchsia-500/15 text-fuchsia-400",
+  Utility: "bg-teal-500/15 text-teal-400",
+  Theme: "bg-pink-500/15 text-pink-400",
+  Wallpaper: "bg-amber-500/15 text-amber-400",
+  // Self-Hosted categories
+  Photos: "bg-pink-500/15 text-pink-400",
+  Media: "bg-violet-500/15 text-violet-400",
+  "Smart Home": "bg-emerald-500/15 text-emerald-400",
+  Documents: "bg-amber-500/15 text-amber-400",
+  Recipes: "bg-orange-500/15 text-orange-400",
+  Bookmarks: "bg-sky-500/15 text-sky-400",
+  Files: "bg-cyan-500/15 text-cyan-400",
+  // DevOps categories
+  Kubernetes: "bg-sky-500/15 text-sky-400",
+  VM: "bg-amber-500/15 text-amber-400",
+  Infrastructure: "bg-violet-500/15 text-violet-400",
+  GitOps: "bg-emerald-500/15 text-emerald-400",
+  "Reverse Proxy": "bg-orange-500/15 text-orange-400",
+  "Web Server": "bg-teal-500/15 text-teal-400",
+  // Privacy categories
+  DNS: "bg-cyan-500/15 text-cyan-400",
+  Identity: "bg-amber-500/15 text-amber-400",
+  Proxy: "bg-violet-500/15 text-violet-400",
+  Isolation: "bg-rose-500/15 text-rose-400",
+  Tor: "bg-purple-500/15 text-purple-400",
+  // New AI categories
+  "LLM Server": "bg-teal-500/15 text-teal-400",
+  "Model Hub": "bg-sky-500/15 text-sky-400",
+  TTS: "bg-rose-500/15 text-rose-400",
+  Framework: "bg-emerald-500/15 text-emerald-400",
+  "Fine-Tuning": "bg-orange-500/15 text-orange-400",
+  // New Dev categories
+  Automation: "bg-violet-500/15 text-violet-400",
+  Diff: "bg-sky-500/15 text-sky-400",
+  // New Gaming categories
+  "Steam Plugin": "bg-emerald-500/15 text-emerald-400",
+  Chat: "bg-sky-500/15 text-sky-400",
+  // New Graphics categories
+  Viewer: "bg-cyan-500/15 text-cyan-400",
+  Panorama: "bg-amber-500/15 text-amber-400",
+  Fonts: "bg-fuchsia-500/15 text-fuchsia-400",
+  Animation: "bg-pink-500/15 text-pink-400",
+  Compositing: "bg-violet-500/15 text-violet-400",
+  "Photo Manager": "bg-emerald-500/15 text-emerald-400",
+  // New Media categories
+  Streaming: "bg-rose-500/15 text-rose-400",
+  Music: "bg-pink-500/15 text-pink-400",
+  DJ: "bg-amber-500/15 text-amber-400",
+  "Audio Synth": "bg-teal-500/15 text-teal-400",
+  "Audio Routing": "bg-cyan-500/15 text-cyan-400",
+  "Audio FX": "bg-orange-500/15 text-orange-400",
+  // New Network categories
+  Diagnostics: "bg-sky-500/15 text-sky-400",
+  Speed: "bg-emerald-500/15 text-emerald-400",
+  Torrent: "bg-amber-500/15 text-amber-400",
+  WiFi: "bg-cyan-500/15 text-cyan-400",
+  Tunnel: "bg-violet-500/15 text-violet-400",
+  // New Security categories
+  "Live OS": "bg-red-500/15 text-red-400",
+  Scanner: "bg-orange-500/15 text-orange-400",
+  FIM: "bg-rose-500/15 text-rose-400",
+  Firewall: "bg-red-500/15 text-red-400",
+  IPS: "bg-amber-500/15 text-amber-400",
+  "2FA": "bg-cyan-500/15 text-cyan-400",
+  // New System categories
+  Logs: "bg-amber-500/15 text-amber-400",
+  Optimizer: "bg-sky-500/15 text-sky-400",
+  Cleaner: "bg-green-500/15 text-green-400",
+  // Performance
+  Gaming: "bg-red-500/15 text-red-400",
+  Thermal: "bg-orange-500/15 text-orange-400",
+  Power: "bg-amber-500/15 text-amber-400",
+  "I/O": "bg-cyan-500/15 text-cyan-400",
+  // Shell
+  "Shell Tool": "bg-green-500/15 text-green-400",
+  // AI IDE categories
+  "IDE AI": "bg-teal-500/15 text-teal-400",
+  "Developer AI": "bg-sky-500/15 text-sky-400",
 };
 
 export function ToolCard({ tool }: ToolCardProps) {

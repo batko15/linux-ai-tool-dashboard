@@ -21,6 +21,11 @@ import { AntigravitySection } from "@/components/dashboard/sections/antigravity"
 import { ReposSection } from "@/components/dashboard/sections/repos";
 import { DeepwebSection } from "@/components/dashboard/sections/deepweb";
 import { IntegrationSection } from "@/components/dashboard/sections/integration";
+import { BrowsersSection } from "@/components/dashboard/sections/browsers";
+import { WaylandSection } from "@/components/dashboard/sections/wayland";
+import { SelfhostedSection } from "@/components/dashboard/sections/selfhosted";
+import { DevopsSection } from "@/components/dashboard/sections/devops";
+import { PrivacySection } from "@/components/dashboard/sections/privacy";
 import { Toaster } from "@/components/ui/sonner";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -44,6 +49,11 @@ const sectionComponents: Record<string, React.ComponentType> = {
   repos: ReposSection,
   deepweb: DeepwebSection,
   integration: IntegrationSection,
+  browsers: BrowsersSection,
+  wayland: WaylandSection,
+  selfhosted: SelfhostedSection,
+  devops: DevopsSection,
+  privacy: PrivacySection,
 };
 
 export default function DashboardPage() {
