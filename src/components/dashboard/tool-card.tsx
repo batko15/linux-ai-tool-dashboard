@@ -93,7 +93,6 @@ const categoryColors: Record<string, string> = {
   Management: "bg-violet-500/15 text-violet-400",
   Backup: "bg-emerald-500/15 text-emerald-400",
   Partition: "bg-amber-500/15 text-amber-400",
-  Analysis: "bg-sky-500/15 text-sky-400",
   Office: "bg-orange-500/15 text-orange-400",
   PDF: "bg-rose-500/15 text-rose-400",
   Notes: "bg-emerald-500/15 text-emerald-400",
@@ -125,11 +124,9 @@ const categoryColors: Record<string, string> = {
   Benchmark: "bg-orange-500/15 text-orange-400",
   Network: "bg-cyan-500/15 text-cyan-400",
   Docs: "bg-amber-500/15 text-amber-400",
-  Shell: "bg-green-500/15 text-green-400",
   Environment: "bg-sky-500/15 text-sky-400",
   Markdown: "bg-violet-500/15 text-violet-400",
   Disk: "bg-amber-500/15 text-amber-400",
-  Editor: "bg-sky-500/15 text-sky-400",
   System: "bg-slate-500/15 text-slate-400",
 };
 
