@@ -17,8 +17,8 @@ import { SecuritySection } from "@/components/dashboard/sections/security";
 import { SystemSection } from "@/components/dashboard/sections/system";
 import { ShortcutsSection } from "@/components/dashboard/sections/shortcuts";
 import { ScriptSection } from "@/components/dashboard/sections/script";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { Toaster } from "@/components/ui/sonner";
+import { AnimatePresence, motion } from "framer-motion";
 
 const sectionComponents: Record<string, React.ComponentType> = {
   overview: OverviewSection,
@@ -55,21 +55,31 @@ export default function DashboardPage() {
 
       {/* Main Content */}
       <main ref={mainRef} className="flex-1 overflow-y-auto">
-        <div className="max-w-5xl mx-auto p-6 pb-24">
-          <ActiveComponent />
+        <div className="max-w-5xl mx-auto p-4 md:p-6 pb-20 md:pb-24 pt-14 md:pt-6">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeSection}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.2 }}
+            >
+              <ActiveComponent />
+            </motion.div>
+          </AnimatePresence>
         </div>
 
         {/* Sticky Footer */}
-        <footer className="sticky bottom-0 bg-background/80 backdrop-blur-sm border-t border-border/50 px-6 py-3">
+        <footer className="sticky bottom-0 bg-background/80 backdrop-blur-sm border-t border-border/50 px-4 md:px-6 py-3">
           <div className="max-w-5xl mx-auto flex items-center justify-between text-xs text-muted-foreground">
-            <div className="flex items-center gap-4">
-              <span>BigCommunity/Manjaro Linux</span>
-              <span className="text-border">|</span>
-              <span>RTX 4070 • i5-12400F • 32GB</span>
-              <span className="text-border">|</span>
-              <span>CachyOS Kernel 7.0.10</span>
+            <div className="flex items-center gap-2 md:gap-4 overflow-hidden">
+              <span className="shrink-0">BigCommunity/Manjaro</span>
+              <span className="text-border hidden sm:inline">|</span>
+              <span className="shrink-0 hidden sm:inline">RTX 4070 &bull; i5-12400F &bull; 32GB</span>
+              <span className="text-border hidden md:inline">|</span>
+              <span className="shrink-0 hidden md:inline">CachyOS Kernel 7.0.10</span>
             </div>
-            <span>Linux AI Tool Dashboard</span>
+            <span className="shrink-0">Linux AI Tool Dashboard</span>
           </div>
         </footer>
       </main>

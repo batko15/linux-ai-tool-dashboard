@@ -1,15 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { sections } from "@/lib/dashboard-data";
 import {
   Monitor, LayoutDashboard, Palette, Brain, Code2, TerminalSquare,
   Gauge, Gamepad2, ImageIcon, Music, Wifi, Shield, Wrench, AppWindow, ScrollText,
-  ChevronLeft, ChevronRight, Search, Command,
+  ChevronLeft, ChevronRight, Search, Command, Menu, X,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -25,17 +24,19 @@ interface SidebarProps {
 export function Sidebar({ activeSection, onSectionChange }: SidebarProps) {
   const [collapsed, setCollapsed] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const filteredSections = searchQuery
     ? sections.filter((s) => s.label.toLowerCase().includes(searchQuery.toLowerCase()))
     : sections;
 
-  return (
-    <div
-      className={`flex flex-col border-r border-border/50 bg-card/50 backdrop-blur-sm transition-all duration-300 ${
-        collapsed ? "w-16" : "w-64"
-      }`}
-    >
+  const handleNav = (id: string) => {
+    onSectionChange(id);
+    setMobileOpen(false);
+  };
+
+  const navContent = (
+    <div className="flex flex-col h-full">
       {/* Header */}
       <div className="flex items-center gap-2 p-3 border-b border-border/50">
         {!collapsed && (
@@ -80,7 +81,7 @@ export function Sidebar({ activeSection, onSectionChange }: SidebarProps) {
             return (
               <button
                 key={section.id}
-                onClick={() => onSectionChange(section.id)}
+                onClick={() => handleNav(section.id)}
                 className={`w-full flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-left transition-all duration-150 group ${
                   isActive
                     ? "bg-primary/10 text-primary border border-primary/20"
@@ -98,8 +99,8 @@ export function Sidebar({ activeSection, onSectionChange }: SidebarProps) {
         </div>
       </ScrollArea>
 
-      {/* Collapse Toggle */}
-      <div className="border-t border-border/50 p-2">
+      {/* Collapse Toggle (desktop only) */}
+      <div className="border-t border-border/50 p-2 hidden md:block">
         <Button
           variant="ghost"
           size="sm"
@@ -110,5 +111,43 @@ export function Sidebar({ activeSection, onSectionChange }: SidebarProps) {
         </Button>
       </div>
     </div>
+  );
+
+  return (
+    <>
+      {/* Mobile hamburger button */}
+      <button
+        className="md:hidden fixed top-3 left-3 z-50 w-10 h-10 rounded-lg bg-card/90 backdrop-blur-sm border border-border/50 flex items-center justify-center shadow-lg"
+        onClick={() => setMobileOpen(!mobileOpen)}
+      >
+        {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+      </button>
+
+      {/* Mobile overlay */}
+      {mobileOpen && (
+        <div
+          className="md:hidden fixed inset-0 bg-black/50 z-40 backdrop-blur-sm"
+          onClick={() => setMobileOpen(false)}
+        />
+      )}
+
+      {/* Mobile sidebar (slide in) */}
+      <div
+        className={`md:hidden fixed top-0 left-0 z-40 h-full w-64 bg-card border-r border-border/50 transform transition-transform duration-300 ${
+          mobileOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        {navContent}
+      </div>
+
+      {/* Desktop sidebar */}
+      <div
+        className={`hidden md:flex flex-col border-r border-border/50 bg-card/50 backdrop-blur-sm transition-all duration-300 ${
+          collapsed ? "w-16" : "w-64"
+        }`}
+      >
+        {navContent}
+      </div>
+    </>
   );
 }

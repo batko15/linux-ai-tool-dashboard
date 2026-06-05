@@ -64,7 +64,7 @@ export const sections: Section[] = [
   { id: "terminal", label: "Terminal & Shell", icon: "TerminalSquare" },
   { id: "performance", label: "Performance", icon: "Gauge" },
   { id: "gaming", label: "Gaming", icon: "Gamepad2" },
-  { id: "graphics", label: "Grafik & Design", icon: "Image" },
+  { id: "graphics", label: "Grafik & Design", icon: "ImageIcon" },
   { id: "media", label: "Audio & Video", icon: "Music" },
   { id: "network", label: "Netzwerk & VPN", icon: "Wifi" },
   { id: "security", label: "Sicherheit", icon: "Shield" },
