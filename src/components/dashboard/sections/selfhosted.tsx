@@ -25,9 +25,7 @@ export function SelfhostedSection() {
         </div>
       </div>
       <ToolSection title="Self-Hosted Services" tools={selfhostedTools} description="Docker-basierte Services fuer dein eigenes Cloud-Setup" />
-      <ToolSection title="Docker Setup" description="Voraussetzung fuer Self-Hosted Services">
-        <div className="bg-[#1e1e2e] text-[#89b4fa] text-[11px] font-mono p-3 rounded-md whitespace-pre-wrap">{dockerSetup}</div>
-      </ToolSection>
+      <div className="bg-[#1e1e2e] text-[#89b4fa] text-[11px] font-mono p-3 rounded-md whitespace-pre-wrap">{dockerSetup}</div>
     </div>
   );
 }

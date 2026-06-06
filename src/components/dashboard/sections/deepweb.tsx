@@ -2,7 +2,7 @@
 
 import { ToolSection } from "../tool-card";
 import { CommandBlock } from "../command-block";
-import { deepWebTools, programStores, duplicateTools, essentialCliTools } from "@/lib/dashboard-data";
+import { deepWebTools, programStores, terminalTools } from "@/lib/dashboard-data";
 import { Globe } from "lucide-react";
 
 const xdgFix = `# XDG-Standard-Ordner erstellen
@@ -52,12 +52,10 @@ export function DeepwebSection() {
 
       <ToolSection title="Deep Web & Search Tools" tools={deepWebTools} />
       <ToolSection title="Programm Stores & Runtimes" tools={programStores} />
-      <ToolSection title="Duplikat-Bereinigung" tools={duplicateTools} />
-      
       <CommandBlock commands={xdgFix} title="Ordnerstruktur korrigieren" showDownload filename="xdg-fix.sh" />
       <CommandBlock commands={dupesScan} title="Duplikat-Scan starten" showDownload filename="dupes-scan.sh" />
       
-      <ToolSection title="100+ Essentielle CLI-Tools" description="Rust/Cargo, System, Navigation, Benchmark" tools={essentialCliTools} />
+      <ToolSection title="Essentielle CLI-Tools" description="Rust/Cargo, System, Navigation, Benchmark" tools={terminalTools} />
     </div>
   );
 }
