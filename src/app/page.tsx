@@ -26,6 +26,8 @@ import { WaylandSection } from "@/components/dashboard/sections/wayland";
 import { SelfhostedSection } from "@/components/dashboard/sections/selfhosted";
 import { DevopsSection } from "@/components/dashboard/sections/devops";
 import { PrivacySection } from "@/components/dashboard/sections/privacy";
+import { DataSection } from "@/components/dashboard/sections/data";
+import { HomelabSection } from "@/components/dashboard/sections/homelab";
 import { Toaster } from "@/components/ui/sonner";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -54,6 +56,8 @@ const sectionComponents: Record<string, React.ComponentType> = {
   selfhosted: SelfhostedSection,
   devops: DevopsSection,
   privacy: PrivacySection,
+  data: DataSection,
+  homelab: HomelabSection,
 };
 
 export default function DashboardPage() {

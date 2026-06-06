@@ -6,7 +6,7 @@ import {
   Monitor, LayoutDashboard, Palette, Brain, Code2, TerminalSquare,
   Gauge, Gamepad2, ImageIcon, Music, Wifi, Shield, Wrench, AppWindow, ScrollText,
   Rocket, GitBranch, Globe, Package, Layers, Server, Container, EyeOff,
-  ChevronLeft, ChevronRight, Search, Command, Menu, X,
+  Database, Router, ChevronLeft, ChevronRight, Search, Command, Menu, X,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -16,6 +16,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Monitor, LayoutDashboard, Palette, Brain, Code2, TerminalSquare,
   Gauge, Gamepad2, ImageIcon, Music, Wifi, Shield, Wrench, AppWindow, ScrollText,
   Rocket, GitBranch, Globe, Package, Layers, Server, Container, EyeOff,
+  Database, Router,
 };
 
 interface SidebarProps {
